@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            //forEach
+            let ocene = [17, 17, 17, 17];
+            let nadOcena;
+            ocene.forEach(ocena => {
+                nadOcena = ocena * 2;
+                return nadOcena;
+            });
+
+            console.log(ocene);
+            console.log(nadOcena);
+
+            //map
+            let ratings = [17, 17, 17, 17];
+
+
+            const rezultat = ratings.map(ocenaFun);
+
+            function ocenaFun(para) {
+                return para + 1;
+            }
+            console.log(rezultat);
+            ////še mal mazohizma s tem
+            //     const wacine = [1, 1, 3, 4];
+            //     nadWacine = [];
+
+            //     function newArej(arr,arej) {
+            //         arr.forEach(arrElement => {
+            //             arej.push(arrElement * 4);
+            //         });
+            //     }
+            //    newArej(wacine,nadWacine);
+            //    console.log(newArej);
+            // console.log(pavicejWacina(nadwacine([])));
+            function newArej(arr) {
+                return arr.map(element => element * 4);
+            }
+
+            let wacine = [1, 1, 3, 4];
+            let nadWacine = newArej(wacine);
+
+            console.log(nadWacine);
+
+            function najNizjeOcene(arr) {
+                const najnizjaVrednost = Math.min(...arr);
+                return arr.filter(vrednost => vrednost === najnizjaVrednost);
+            }
+            let najNizje = najNizjeOcene(wacine);
+            console.log(najNizje);
+
+            function najnizjAOcenA(arej) {
+                return Math.min(...arej);
+            }
+            console.log(najnizjAOcenA(wacine));
+            
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="sl">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Razlika med Map in .map()</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 3rem 2rem;
+            }
+
+            div {
+                margin: 1.5rem 0;
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                max-width: 800px;
+            }
+
+            th,
+            td {
+                border: 1px solid #ccc;
+                padding: 10px;
+                text-align: left;
+            }
+
+            th {
+                background-color: #f2f2f2;
+            }
+
+            caption {
+                font-size: 1.3rem;
+                margin-bottom: 0.5rem;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <h1>Razlika med <code>Map</code> in <code>.map()</code> v JavaScriptu</h1>
+
+        <table>
+            <caption>Primerjalna tabela</caption>
+            <thead>
+                <tr>
+                    <th>Lastnost</th>
+                    <th><code>Map</code> (objekt)</th>
+                    <th><code>.map()</code> (metoda na arrayu)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Vrsta</td>
+                    <td>Struktura za shranjevanje ključ–vrednost</td>
+                    <td>Metoda na poljih (arrays)</td>
+                </tr>
+                <tr>
+                    <td>Uporaba</td>
+                    <td>Povezovanje ključev s podatki</td>
+                    <td>Ustvarjanje novega polja iz obstoječega</td>
+                </tr>
+                <tr>
+                    <td>Primer</td>
+                    <td>
+                        <pre><code>const map = new Map([
+    ["jabolka", 10],
+    ["banane", 5]
+    ]);
+    map.get("jabolka"); // 10</code></pre>
+                    </td>
+                    <td>
+                        <pre><code>const arr = [1, 2, 3];
+    const podvojeno = arr.map(x => x * 2);
+    // [2, 4, 6]</code></pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Vrsta ključev</td>
+                    <td>Lahko so kateri koli tipi (npr. objekti)</td>
+                    <td>Ne uporablja ključev – deluje na vrednostih v arrayu</td>
+                </tr>
+                <tr>
+                    <td>Rezultat</td>
+                    <td>Map objekt (ni array)</td>
+                    <td>Novo polje (array)</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style>
+            <i>
+                📌 Torej:
+                Uporabiš Map, kadar želiš naprednejšo strukturo za povezovanje ključev in vrednosti (ki niso nujno
+                stringi).
+
+                Uporabiš .map() na poljih (arrayih), kadar želiš ustvariti novo polje na podlagi obstoječega.
+            </i>
+        </div>
+        <div>
+            🎯 Primer za razliko: .map() na arrayu:<br><br>
+            <code>
+                    let stevila = [1, 2, 3];<br>
+    let dvojno = stevila.map(x => x * 2); // [2, 4, 6
+            </code>
+        </div>
+        <div>
+            ✅ Zakaj .set()?<br>
+            Ker Map ni enako kot običajen objekt ({}), kjer bi lahko pisal:<br>
+
+            obj["apples"] = 200;<br><code>
+Z Map moraš uporabljati metode .set() in .get():
+
+set(ključ, vrednost) → doda ali posodobi vnos
+
+get(ključ) → prebere vrednost
+</code>
+        </div>
+        <div>
+            <code>
+
+
+                    <!-- <p id="demo"></p>
+                     -->
+                    <!-- <script> -->
+                        const fruits = new Map([
+                            ["apples", 500],
+                            ["bananas", 300],
+                            ["oranges", 200]
+                        ]);
+<br>
+                        // posodobimo vrednost za "apples"
+                        fruits.set("apples", 200);
+<br>
+                        let numb = fruits.get("apples");<br>
+                        document.getElementById("demo").innerHTML = "There are " + numb + " apples.";
+                     <!-- </script> -->
+            </code>
+            <code>
+                <script>
+                    // Primer z Map
+                    const fruitsMap = new Map([
+                        ["apples", 500],
+                        ["bananas", 300],
+                        ["oranges", 200]
+                    ]);
+
+                    // Posodobimo vrednost
+                    fruitsMap.set("apples", 150);
+
+                    const applesFromMap = fruitsMap.get("apples");
+                    document.getElementById("map-demo").innerText = "Map: There are " + applesFromMap + " apples.";
+
+                    // Primer z objektom
+                    const fruitsObj = {
+                        apples: 500,
+                        bananas: 300,
+                        oranges: 200
+                    };
+
+                    // Posodobimo vrednost
+                    fruitsObj.apples = 150;
+
+                    const applesFromObj = fruitsObj["apples"];
+                    document.getElementById("object-demo").innerText = "Object: There are " + applesFromObj + " apples.";
+
+
+                    // --- Map primer ---
+                    const fruitsMapII = new Map([
+                        ["apples", 500],
+                        ["bananas", 300],
+                        ["oranges", 200]
+                    ]);
+
+                    fruitsMapII.set("apples", 150); // Posodobimo
+
+                    // Vstavi v tabelo
+                    const mapTable = document.getElementById("map-table");
+                    for (const [fruit, quantity] of fruitsMap.entries()) {
+                        const row = `<tr><td>${fruit}</td><td>${quantity}</td></tr>`;
+                        mapTable.innerHTML += row;
+                    }
+
+                    // --- Objekt primer ---
+                    const fruitsObj = {
+                        apples: 500,
+                        bananas: 300,
+                        oranges: 200
+                    };
+
+                    fruitsObj.apples = 150; // Posodobimo
+
+                    // Vstavi v tabelo
+                    const objectTable = document.getElementById("object-table");
+                    for (const fruit in fruitsObj) {
+                        const row = `<tr><td>${fruit}</td><td>${fruitsObj[fruit]}</td></tr>`;
+                        objectTable.innerHTML += row;
+                    }
+                </script>
+    </body>
+</html>

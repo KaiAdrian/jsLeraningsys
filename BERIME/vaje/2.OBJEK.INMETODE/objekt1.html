@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div id="objekt-izpis"></div>
+        <script>
+            const avto = {
+                znamka: "Toyota",
+                model: "Corolla",
+                leto: 2020,
+                // opis() {
+                //     console.log(`${this.znamka} ${this.model} (${this.leto})`);
+                // }
+                opis() {
+                    return `${this.znamka} ${this.model} (${this.leto})`;
+                }
+
+            }
+            avto.opis();
+            console.log(avto.opis());
+            document.getElementById('objekt-izpis').innerHTML = avto.opis();
+
+
+
+            const novArr = [10, 20, 30, 40].map(st => st + 5);//15,25,35,45
+            console.log(novArr);
+
+
+            // Ustvari nov array, ki vsebuje samo števila večja od 10 in sodo število.
+            const arej = [3, 8, 11, 20, 27, 32];//20,32
+
+            const arejFilter = arej.filter(st => st % 2 === 0 && st > 10);
+            console.log(arejFilter);
+
+            const array = [5, 10, 15];
+            // array1.reduce(
+            //     (accumulator, currentValue) => accumulator + currentValue,
+            //     initialValue,
+            // array.reduce((acc, el) => acc + el, zacetnaVrednost);
+            const redukcija = array.reduce((acc, el) => acc + el, 0);
+            console.log(redukcija);
+        </script>
+    </body>
+
+</html>

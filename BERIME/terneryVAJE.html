@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            let temperature = 25;
+            let message = temperature > 25 ? "Vroče je!" : "Ni prevroče.";
+            console.log(message);
+
+            let isAdmin;
+            let ocena;
+
+            if (isAdmin) {
+                userRole = "Administrator";
+            } else
+                userRole = "Uporabnik";
+
+            let rezultat;
+            if (ocena >= 90) {
+                rezultat = "Odlično";
+            } else if (ocena >= 75) {
+                rezultat = "Dobro";
+            } else if (ocena >= 60) {
+                rezultat = "Zadostno";
+            } else
+                rezultat = "Nezadostno";
+
+            ocena = 80;
+            console.log(rezultat);
+
+            function popravc() {
+                ocena = 100
+                return ocena;
+            }
+            rezultat = popravc();
+            console.log(ocena);
+
+            console.log(rezultat);
+        </script>
+    </body>
+
+</html>

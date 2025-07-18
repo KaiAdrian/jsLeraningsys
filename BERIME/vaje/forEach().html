@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            //     👉 Naloga:
+            // Z forEach():
+
+            // Vsako število pomnoži z 3
+
+            // Izpiši rezultat v obliki:
+
+            // 2 × 3 = 6
+            // 4 × 3 = 12
+            // ...
+            const numbers = [2, 4, 6, 8];
+
+            numbers.forEach((num) => {
+                // return num * 3;
+                console.log(`${num} × 3 = ${num * 3}`);
+            }
+            );
+            console.log(numbers);//Array se ni spremenil!?
+
+            //  🔧 Če bi res želel SPREMENITI array:
+            // Uporabi npr. map():
+
+            const novaStevila = numbers.map(num => num * 3);
+            console.log(novaStevila); // [6, 12, 18, 24]
+
+        </script>
+    </body>
+
+</html>

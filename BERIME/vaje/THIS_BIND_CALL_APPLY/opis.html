@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            // izven objekta (globalno):
+            function pokazi() {
+                console.log(this);
+            }
+
+            pokazi(); // V brskalniku: window
+            // ➡ V “navadni” funkciji this ni objekt, ampak globalni kontekst (window v brskalniku ali undefined v strict modu).
+
+            // bind() – ustvari novo funkcijo s fiksnim this
+            const f = obj.prikazi.bind(obj);
+            f(); // test
+
+
+            //  call() – takoj pokliče funkcijo s podanim this
+            // function pozdrav() {
+            //     console.log(this.ime);
+            // }
+
+            // const oseba = { ime: "Nika" };
+            // pozdrav.call(oseba); // Nika
+
+
+
+            // apply() – kot call(), ampak argumente podaš kot array
+            function pozdrav(zivjo, klicaj) {
+                console.log(`${zivjo}, ${this.ime}${klicaj}`);
+            }
+
+            const oseba = { ime: "Luka" };
+
+            pozdrav.apply(oseba, ["Zdravo", "!"]); // Zdravo, Luka!
+
+        </script>
+    </body>
+
+</html>

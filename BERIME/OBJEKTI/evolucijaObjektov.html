@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            //🧱 1. Object.create(prototypeObj)
+            // ➡️ Uporabiš, kadar želiš ustvariti objekt, ki neposredno podeduje od drugega objekta.
+
+            // ✅ Uporabno za:
+            // preprosto dedovanje
+
+            // bolj “funkcionalen” stil (brez class)
+
+            // boljši nadzor nad prototipno verigo
+
+
+            const oseba = {
+                pozdrav() {
+                    console.log(`Živjo, sem ${this.ime}`);
+                }
+            };
+
+            const student = Object.create(oseba);
+            student.ime = "Ana";
+            student.pozdrav(); // Živjo, sem Ana
+
+
+            //🛠️ 2. Constructor function (function Oseba(...) { })
+            // ➡️ Uporabljaš, kadar želiš ustvariti več primerkov z istim “načrtom”.
+
+            // ✅ Uporabno za:
+            // ustvarjanje instanc
+
+            // klasični OOP pristop pred ES6(new + this)
+
+            // dobra alternativa class pred letom 2015
+
+            function Oseba(ime) {
+                this.ime = ime;
+            }
+            Oseba.prototype.pozdrav = function () {
+                console.log(`Živjo, sem ${this.ime}`);
+            };
+
+            const joze = new Oseba("Jože");
+            joze.pozdrav(); // Živjo, sem Jože
+
+            // Uporabljaš new, da ustvariš novo instanco, this kaže nanjo.
+
+
+            // 🏛️ 3. class in extends
+            // ➡️ Sodobni način pisanja razredov in dedovanja v JS.
+
+            // ✅ Uporabno za:
+            // strukturiran OOP
+
+            // jasno dedovanje(extends )
+
+            //  berljivost(za večje projekte)
+
+            class Oseba {
+                constructor(ime) {
+                    this.ime = ime;
+                }
+                pozdrav() {
+                    console.log(`Živjo, sem ${this.ime}`);
+                }
+            }
+
+            class Student extends Oseba {
+                constructor(ime, predmet) {
+                    super(ime);
+                    this.predmet = predmet;
+                }
+                info() {
+                    console.log(`${this.ime} študira ${this.predmet}`);
+                }
+            }
+
+            const luka = new Student("Luka", "fiziko");
+            luka.pozdrav(); // Živjo, sem Luka
+            luka.info();    // Luka študira fiziko
+
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            //         🏹 this v arrow funkcijah(=> )
+            // 🧠 Ključna razlika:
+            // ❗ Klasična funkcija:
+            //             this je dinamičen — odvisen od tega, kdo kliče funkcijo.
+
+            const oseba = {
+                ime: "Nika",
+                povejIme: function () {
+                    console.log(this.ime); // "this" = oseba
+                }
+            };
+
+            oseba.povejIme(); // "Nika"
+            // ✅ Arrow funkcija:
+            //this je leksikalno vezan — podeduje this iz okolice ob definiranju, ne ob klicu.
+
+
+            const osebaa = {
+                ime: "Nika",
+                povejIme: () => {
+                    console.log(this.ime); // "this" NI oseba
+                }
+            };
+
+            osebaa.povejIme(); // undefined
+            // ➡ Ker je this pri arrow funkciji vezan na zunanji kontekst (v tem primeru window ali undefined), NE deluje kot pričakuješ v metodi objekta.
+
+            // ✅ Kdaj so arrow funkcije koristne?
+            // 1. V callbackih, kjer NE želiš izgube this:
+
+            const timerObj = {
+                sekunde: 0,
+                start() {
+                    setInterval(() => {
+                        this.sekunde++; // "this" ostane timerObj
+                        console.log(this.sekunde);
+                    }, 1000);
+                }
+            };
+
+            // timerObj.start();
+            // Če bi uporabil function () { ... } namesto () => {}, bi this kazal na window, ne na timerObj.
+
+            // ❌ Kdaj NE uporabljaš arrow funkcij?
+            // Ko definiraš metode objektov (kjer želiš, da this kaže na objekt)
+
+            // Kjer moraš this vezati glede na klic, npr. z bind, call, apply
+
+            // 🧪 Mini vaja z razliko:
+
+            const osebaaa = {
+                ime: "Ana",
+                normalna: function () {
+                    console.log("normalna:", this.ime);
+                },
+                puščica: () => {
+                    console.log("puščica:", this.ime);
+                }
+            };
+
+            osebaaa.normalna(); // "Ana"
+            osebaaa.puščica();  // undefined
+            // 🎯 Zakaj?
+            // normalna je metoda → this = oseba
+
+            // puščica podeduje this iz trenutka definicije — kar ni oseba, temveč window (ali undefined v strict mode)
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//         ✅ Razlika med for...in in for...of
+// Obe zanki omogočata iteracijo, vendar delujeta na različne načine in za različne tipe podatkov.
+
+// ✅ for...in zanka
+// Iterira po ključih (indeksih ali lastnostih).
+
+// Primerna za objekte in arraye (čeprav za arraye ni najbolj priporočljiva).
+
+// Vrne ime lastnosti (ključ).
+
+
+
+
+// for (const key in objekt) {
+//   // koda
+// }
+
+
+// Primer z objektom:
+
+
+const person = { name: "Alice", age: 25, city: "Paris" };
+
+for (const key in person) {
+  console.log(`${key}: ${person[key]}`);
+}
+// Izhod:
+
+// name: Alice  
+// age: 25  
+// city: Paris  
+// Primer z arrayem: (ni priporočljivo, ker vrne indekse)
+
+// javascript
+// Kopiraj
+// Uredi
+const fruitss = ["apple", "banana", "cherry"];
+
+for (const index in fruitss) {
+  console.log(index);  // vrne 0, 1, 2
+  console.log(fruitss[index]);  // vrne apple, banana, cherry
+}
+
+
+// ✅ for...of zanka
+// Iterira po vrednostih iterabilnega objekta (array, niz, Map, Set).
+
+// Ne deluje z objekti (razen z uporabo Object.values() ali Object.entries()).
+
+// Vrne vrednost elementa.
+
+
+// for (const value of zbirka) {
+//   // koda
+// }
+// Primer z arrayem:
+
+
+const fruits = ["apple", "banana", "cherry"];
+
+for (const fruit of fruits) {
+  console.log(fruit);  // vrne apple, banana, cherry
+}
+// Primer z nizom:
+
+
+const word = "HELLO";
+
+for (const char of word) {
+  console.log(char);  // vrne H, E, L, L, O
+}
+// ✅ Primerjava v tabeli:
+// Vidik	for...in	for...of
+// Kaj iterira?	Ključe (indekse ali lastnosti)	Vrednosti elementov
+// Tip podatkov	Objekti in arrayi	Arrayi, nizi, Set, Map
+// Uporaba z objekti?	DA	NE (razen z Object.values())
+// Pogostost	Manj primeren za arraye	Primeren za iterabilne objekte
+
+// ✅ Kdaj uporabiti?
+// for...in – Kadar želiš iterirati po ključi objekta ali indeksih arraya (čeprav za arraye raje uporabi forEach()).
+
+// for...of – Kadar želiš iterirati po vrednostih arraya, niza, Set, Map, ipd.
+    </script>
+</body>
+</html>

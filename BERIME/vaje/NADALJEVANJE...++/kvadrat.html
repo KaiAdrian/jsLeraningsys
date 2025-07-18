@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <input type="number" id="steviloA" placeholder="Prvo število">
+        <input type="number" id="steviloB" placeholder="Drugo število">
+
+        <select id="operacija">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+
+        <button onclick="izracunaj()">Izračunaj</button>
+
+        <div class="izracun"></div>
+        <div class="lastnost"></div>
+        <div class="kvadrati"></div>
+
+
+        <script>
+            const kalkulator = {
+                a: 0,
+                b: 0,
+                operator: "+",
+                rezultat: 0,
+                kvadratA() {
+                    return this.a * this.a;
+                },
+                kvadratB() {
+                    return this.b ** 2;
+                },
+
+
+                izracun() {
+                    switch (this.operator) {
+                        case "+":
+                            this.rezultat = this.a + this.b;
+                            break;
+                        case "-":
+                            this.rezultat = this.a - this.b;
+                            break;
+                        case "*":
+                            this.rezultat = this.a * this.b;
+                            break;
+                        case "/":
+                            this.rezultat = this.b !== 0 ? this.a / this.b : "Napaka: deljenje z 0";
+                            break;
+                        default:
+                            this.rezultat = "Neznana operacija";
+                    }
+                }
+            };
+
+            function izracunaj() {
+                if (
+                    document.getElementById("steviloA").value === "" ||
+                    document.getElementById("steviloB").value === ""
+                ) {
+                    document.querySelector(".izracun").textContent = "Prosim, vnesi obe številki!";
+                    return;
+                }
+
+                kalkulator.a = Number(document.getElementById("steviloA").value);
+                kalkulator.b = Number(document.getElementById("steviloB").value);
+                kalkulator.operator = document.getElementById("operacija").value;
+                const jeSodo = (stevilo => {
+                    return stevilo % 2 === 0 ? "sodo" : "liho";
+                })
+
+                kalkulator.izracun();
+
+                const lastnost = typeof kalkulator.rezultat === "number" ? jeSodo(kalkulator.rezultat) : "";
+
+         
+                document.querySelector(".izracun").textContent =
+                    `${kalkulator.a} ${kalkulator.operator} ${kalkulator.b} = ${kalkulator.rezultat}`;
+
+                document.querySelector(".lastnost").textContent =
+                    lastnost ? `Rezultat je ${lastnost} število.` : "";
+
+                document.querySelector(".kvadrati").textContent =
+                    `Kvadrati: A²=${kalkulator.kvadratA()}, B²=${kalkulator.kvadratB()}`;
+
+            }
+
+        </script>
+    </body>
+
+</html>

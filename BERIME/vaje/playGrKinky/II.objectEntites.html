@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            const plisko = {
+                ime: "testko",
+                starost: 34,
+                vrednostA: true,
+                vrednostB: true,
+                vrednostC: false,
+                vrednostD: true,
+            };
+            //         Odlično vprašanje! 👇
+
+            // V metodi .reduce() je acc okrajšava za "accumulator" — to je spremenljivka, ki hrani vmesni rezultat med izvajanjem reduce funkcije. Na koncu postane acc tvoj končni rezultat.
+
+            // Konkretno v tvojem primeru:
+
+            const result = Object.entries(plisko).reduce((acc, [key, value]) => {
+                if (value === true) {
+                    acc.arrWVtrue.push(key);
+                    acc.stevec++;
+                }
+                return acc;
+            }, { arrWVtrue: [], stevec: 0 });
+            console.log(plisko);
+            console.log(result);
+            // 🔍 Kaj se tukaj dogaja?
+
+            // Object.entries(plisko) ustvari array parov [ključ, vrednost].
+
+            // .reduce() gre skozi vsak par in:
+
+            // acc je objekt, ki si ga ti definiral kot { arrWVtrue: [], stevec: 0 }.
+
+            // [key, value] je trenutni [lastnost, vrednost] par iz plisko.
+
+            // Če je value === true, se:
+
+            // key doda v acc.arrWVtrue,
+
+            // števec acc.stevec poveča.
+
+            // acc se vrne, da se uporabi pri naslednji iteraciji.
+
+            // Po vseh parih je result enak končnemu acc.
+
+            // Če napišemo enako bolj "ročno":
+            
+            // let acc = { arrWVtrue: [], stevec: 0 };
+
+            // for (let [key, value] of Object.entries(plisko)) {
+            //     if (value === true) {
+            //         acc.arrWVtrue.push(key);
+            //         acc.stevec++;
+            //     }
+            // }
+
+            // const result = acc;
+
+
+        </script>
+    </body>
+
+</html>

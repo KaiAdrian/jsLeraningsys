@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            let kitara = {
+                elektricna: true,
+                bass: false,
+                strune: 6,
+                uglasitev: ["E", "B", "G", "D", "A", "E"],
+                znamka: "Fender",
+            };
+            // console.log("kitara.uglasitev: " + kitara.uglasitev);
+
+            //         for (let kljuc in kitara) {
+            //     console.log(kljuc + ": " + kitara[6]);
+            // }
+
+            // for(const vrednost of Object.values (kitara)){
+            //     console.log(vrednost);
+            // }
+            // Object.values(kitara).forEach(value => {
+            //   console.log(value);
+            // });
+
+
+            function najdiKljucPoVrednostiObj(obj, iskanaVrednost) {
+                return Object.keys(obj).filter((ključ) => obj[ključ] === iskanaVrednost);
+            }
+            console.log(najdiKljucPoVrednostiObj(kitara, false));
+            console.log(najdiKljucPoVrednostiObj(kitara, 6));
+
+            // console.log(kitara.hasOwnProperty(ime));  
+        </script>
+    </body>
+
+</html>

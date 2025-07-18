@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="sl">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body onload="readFromLocalStorage()">
+        <h1>To-Do Seznam</h1>
+        <input type="text" id="vnos" placeholder="Nova naloga">
+        <select id="prioriteta">
+            <option value="nizka">Nizka</option>
+            <option value="srednja" selected>Srednja</option>
+            <option value="visoka">Visoka</option>
+        </select>
+        <button id="dodaj">Dodaj</button>
+        <ul id="seznam"></ul>
+        <!-- <button id="pocisti" onclick="readFromLocalStorage('pocisti')">Počisti vse</button> -->
+
+        <script src="apps.js"></script>
+    </body>
+
+</html>

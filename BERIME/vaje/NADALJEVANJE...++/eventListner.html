@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <button id="btn-cas">Pokaži čas</button>
+        <div class="izpis-cas"></div>
+
+        <input type="text" id="vnos" placeholder="Ti samo piši" style="margin-top: 15px;">
+        <div class="besedilo"></div>
+        <script>
+            //         ✅ Naloga 1: Gumb za izpis
+            // Navodilo:
+            // Na spletni strani naj bo gumb z napisom "Pokaži čas". Ko uporabnik klikne gumb, naj se v spodnjem <div> izpiše trenutni čas (format HH:MM:SS).
+
+            // 🔧 Uporabi:
+
+            // Date objekt v JS
+
+            // addEventListener("click", ...)
+
+            // spremembo textContent v <div>
+            document.getElementById('btn-cas').addEventListener('click', () => {
+                let cas = new Date();
+                document.querySelector(".izpis-cas").textContent = `${cas.getHours()}: ${cas.getMinutes()}:${cas.getSeconds()}`
+            })
+
+            //     🔧 Predlogi za izboljšavo (če želiš):
+            // Dodaj padStart() za ure, minute in sekunde, da se vedno izpišejo z dvema številkama (npr. 09:05:01 namesto 9:5:1):
+
+            // let h = String(cas.getHours()).padStart(2, "0");
+            // let m = String(cas.getMinutes()).padStart(2, "0");
+            // let s = String(cas.getSeconds()).padStart(2, "0");
+            // document.querySelector(".izpis-cas").textContent = `${h}:${m}:${s}`;
+            let izpis = document.getElementById("vnos");
+            izpis.addEventListener('input', () => {
+
+                document.querySelector(".besedilo").textContent = izpis.value;
+            });
+
+        </script>
+
+    </body>
+
+</html>

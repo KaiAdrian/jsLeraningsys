@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            const fruits = ["apple", "banana", "cherry"];//nov arr uperCASE
+            // const uppercased = fruits.map(sadez => sadez.toUpperCase());
+
+            //             🛠️ Zdaj pa vaja(map z napako):
+            // Tvoja koda:
+
+            //             javascript
+            //             Kopiraj
+            //             Uredi
+            //             let sadjeNew = fruits.map((indeks, sadez) => {
+            //                 sadez.toUpperCase()
+            //             });
+            // ❗ Kje je težava ?
+            //                 V vrstnem redu argumentov: v.map((** element **, ** index **) => ...) gre najprej element, šele nato indeks.
+
+            // Manjka return v { ... } bloku – ali pa moraš uporabiti krajšo implicitno obliko.
+
+            // ✅ Popravljena različica z return:
+            //             javascript
+            //             Kopiraj
+            //             Uredi
+            const sadjeNew = fruits.map((sadez, indeks) => {
+                return `${indeks + 1}. ${sadez.toUpperCase()}`;
+            });
+            // ✅ Ali krajša verzija z implicitnim returnom:
+            //             javascript
+            //             Kopiraj
+            //             Uredi
+            const sadjeNewII = fruits.map((sadez, indeks) => `${indeks + 1}. ${sadez.toUpperCase()}`);
+            console.log(sadjeNew);
+        </script>
+    </body>
+
+</html>

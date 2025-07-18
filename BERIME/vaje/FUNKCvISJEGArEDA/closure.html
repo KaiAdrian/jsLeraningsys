@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+        
+
+            // 🔒 Kaj je closure ?
+            //Closure(po slovensko zaprtje) pomeni, da notranja funkcija "zapre" dostop do spremenljivk zunanje funkcije, tudi po tem, ko je zunanja funkcija že zaključila z izvajanjem.
+
+            //🔧 Primer(iz tvoje funkcije):
+          
+            // function ustvariMnozilnik(n) {
+            //     return function(x) {
+            //         return x * n; // tukaj x dostopa do n iz zunanje funkcije
+            //     }
+            // }
+
+            // const vrni4 = ustvariMnozilnik(4);
+            // console.log(vrni4(10)); // 40
+            // 👉 Kaj se dogaja?
+            // ustvariMnozilnik(4) ustvari funkcijo, ki si zapomni vrednost n (torej 4).
+
+            // Čeprav se ustvariMnozilnik zaključi, funkcija vrni4 še vedno "vidi" n, ker ga je zaprla v t.i. lexical environment.
+
+            // To pomeni: notranja funkcija "nosí s sabo" kontekst (spremenljivke), v katerem je bila ustvarjena.
+
+            // 🔍 Zakaj je to uporabno?
+            // Lahko si zapomniš neko stanje (npr. števec, konfiguracijo, nastavitve).
+
+            // Omogoča funkcionalni stil programiranja (npr. ustvarjanje tovarniških funkcij).
+
+            // Zelo pomembno pri modulih, event handlerjih, async klicih, privatnih spremenljivkah, itd.
+
+
+        </script>
+    </body>
+
+</html>

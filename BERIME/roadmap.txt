@@ -1,0 +1,71 @@
+🗺️ Evo ti preprost mentalni zemljevid, kako lahko postopoma gradiš znanje:
+🟢 1. Temelji (če jih že znaš, jih samo preletiš)
+spremenljivke: let, const, var
+
+tipi podatkov: string, number, boolean, object, array, null, undefined
+
+pogoji: if, else, switch
+
+zanke: for, while, for...of, for...in
+
+
+///////////////////////// U ARE HERE///////////////////
+
+funkcije: običajne, puščične (arrow functions)
+
+///////////////////////// U ARE HERE///////////////////
+
+osnovni DOM in dogodki
+
+🟡 2. Strukture (kamor spada class)
+objekti & metode
+
+array metode (map, filter, reduce, ...)
+
+funkcije višjega reda (funkcije, ki vračajo ali sprejmejo druge funkcije)
+
+razredi (class, extends, constructor)
+
+razumevanje this, bind, call, apply
+
+🔵 3. Sodobni JS (ES6+ in praksa)
+moduli: import, export
+
+asinkronost: setTimeout, Promise, async/await
+
+fetch API: delo z API-ji
+
+localStorage, JSON
+
+razbitje strukture: destructuring, spread/rest operatorji
+
+🟣 4. DOM in interaktivnost
+branje in spreminjanje vsebine (.innerText, .value, .classList, ...)
+
+poslušanje dogodkov (click, keyup, ...)
+
+manipulacija elementov (dodajanje, brisanje, animacije)
+
+🔄 Kako naprej, da se ne izgubiš?
+✅ 1. Majhni koraki, vsak dan nekaj
+Tudi če narediš 10–20 minut/dan, greš naprej. Ne rabiš vsega naenkrat.
+
+✅ 2. Deli učenje na teme + praksa
+Npr.: en dan samo funkcije, drug dan array metode s konkretnimi primeri. Napiši mini projekt (seštevalnik, to-do, kviz...).
+
+✅ 3. Vprašanja kot zdaj!
+Če imaš občutek, da "ne veš, kaj sploh vprašat", samo reči:
+
+"Rad bi primer za uporabo async/await v gumbu"
+ali
+"Napiši mi preprost kviz z vprašanji in gumbi"
+
+Pa se učiva skozi prakso.
+
+Če želiš, ti lahko pripravim:
+
+✅ učni plan za 7 ali 14 dni
+
+✅ mini projekte (po težavnosti)
+
+✅ ali pa grem s tabo sproti in skupaj "sestavljava znanje"

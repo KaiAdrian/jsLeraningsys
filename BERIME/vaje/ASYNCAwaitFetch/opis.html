@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            // 🟢 ZAČETEK: async / await
+            // ❓ Kaj rešuje?
+            // Branje asinhrone kode, ki je včasih zmedena s .then()
+
+            // Pojavi se pogosto z fetch(), setTimeout, API klici, itd.
+
+            // ✅ Primer brez await (klasični Promise):
+            fetch("https://jsonplaceholder.typicode.com/posts/1")
+                .then(res => res.json())
+                .then(data => console.log(data))
+                .catch(err => console.error(err));
+
+
+            // 🔁 Enako z async/await:
+
+            async function pridobiPodatek() {
+                try {
+                    const odgovor = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+                    const data = await odgovor.json();
+                    console.log(data);
+                } catch (napaka) {
+                    console.error("Napaka:", napaka);
+                }
+            }
+
+            pridobiPodatek();
+
+
+            // await čaka na rezultat fetch()
+
+            // try/catch je enostavnejši kot .catch()
+
+            //🟡 NAPREJ: fetch()
+            // Kaj dela?
+            // Pošlje HTTP zahtevo (GET, POST, ...)
+
+            // Deluje asinhrono
+
+            // Vrne Promise z objektom Response
+
+            fetch("https://api.example.com/podatki")
+                .then(res => res.json())  // ali .text(), .blob(), .arrayBuffer()
+                .then(data => console.log(data));
+
+            // Lahko dodajaš tudi headers, metodo, body za POST:
+            fetch("https://api.example.com/podatki", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ ime: "Cris", email: "test@test.com" })
+            });
+
+
+            //🧱 MODULI (import / export)
+            // 🎯 Zakaj?
+            // Boljša organizacija kode (ločene datoteke)
+
+            // Uporabno v večjih projektih ali z orodji (npr. Vite, Webpack)
+
+            export const ime = "Cris";
+            export function pozdravi() {
+                console.log(`Živjo, ${ime}!`);
+            }
+
+            // V drugi datoteki main.js:
+            import { ime, pozdravi } from "./uporabnik.js";
+
+            console.log(ime);      // Cris
+            pozdravi();            // Živjo, Cris!
+
+            // Pomembno: datoteke morajo biti označene kot module:
+            // <script type="module" src="main.js</script>
+
+
+
+        </script>
+    </body>
+
+</html>

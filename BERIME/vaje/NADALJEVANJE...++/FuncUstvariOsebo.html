@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <!-- <body><p>Ime:</p>
+        <input type="text" id="ime" name="ime" placeholder="ime">
+        <p>Starost:</p><input type="number" style="width: 177px; box-sizing: border-box;" id="starost" name="starost" min="15" max="120">
+        <p>Spol:</p>
+        <input type="radio" name="spol" id="m">M
+        <input type="radio" name="spol" id="f">Ž
+        <p><button type="submit">Potrdi</button></p> -->
+
+    <!-- ✅ 1. Ali moraš imeti <form>?
+        Ne moraš, ampak je priporočljivo, ker:
+
+        omogoča submit s tipko Enter
+
+        omogoča uporabo dogodka submit
+
+        bolj semantično (pravilna HTML struktura) -->
+
+    <form id="obrazec">
+        <p>Ime:</p>
+        <input type="text" id="ime" name="ime" placeholder="ime">
+
+        <p>Starost:</p>
+        <input type="number" id="starost" name="starost" min="15" max="120"
+            style="width: 177px; box-sizing: border-box;">
+
+        <p>Spol:</p>
+        <input type="radio" name="spol" value="M" id="m">M
+        <input type="radio" name="spol" value="Ž" id="f">Ž
+
+        <p><button type="submit">Potrdi</button></p>
+    </form>
+
+    <div id="izpis"></div>
+
+
+    <script>
+        document.getElementById("obrazec").addEventListener("submit", function (e) {
+            e.preventDefault(); // prepreči reload strani
+
+            const ime = document.getElementById("ime").value.trim();
+            const starost = Number(document.getElementById("starost").value);
+            const spol = document.querySelector('input[name="spol"]:checked')?.value;
+
+            if (!ime || !starost || !spol) {
+                alert("⚠️ Prosim, izpolni vsa polja.");
+                return;
+            }
+
+            // ✅ Ustvari objekt osebe
+            const oseba = {
+                ime,
+                starost,
+                spol
+            };
+
+
+            
+            // ✅ Destrukturiranje (razloženo spodaj)
+            const { ime: i, starost: s, spol: g } = oseba;
+
+            document.getElementById("izpis").textContent =
+                `✅ Profil: ${i}, ${s} let, spol: ${g}`;
+        });
+        // 🧠 3. Kaj je destrukturiranje ?
+        //             Destrukturiranje pomeni, da iz objekta ali arraya “izvlečeš” podatke v posamezne spremenljivke.
+
+        // 📦 Primer z objektom:
+        //         js
+        //         Kopiraj
+        //         Uredi
+        const oseba = {
+            ime: "Lana",
+            starost: 27,
+            spol: "Ž"
+        };
+
+        const { ime, starost, spol } = oseba;
+
+        console.log(ime);     // "Lana"
+        console.log(starost); // 27
+        // Lahko tudi preimenuješ:
+
+        const { ime: i, starost: s } = oseba;
+        console.log(i); // "Lana"
+        // 📦 Primer z arrayem:
+
+        const arr = [1, 2, 3];
+        const [a, b, c] = arr;
+    </script>
+    </body>
+
+</html>

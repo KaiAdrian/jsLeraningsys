@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div class="vrednost-a"></div>
+        <div class="vrednost-b"></div>
+        <div class="rezultat"></div>
+        <script>
+            const izracunaj = () => {
+                const vnosA = prompt("Vnesi prvo številko:");
+                const vnosB = prompt("Vnesi drugo številko:");
+
+                // Pretvorimo v števila (lahko pride kot string!)
+                const steviloA = parseFloat(vnosA);
+                const steviloB = parseFloat(vnosB);
+
+                // Preverimo, ali sta veljavni številki
+                if (isNaN(steviloA) || isNaN(steviloB)) {
+                    document.querySelector(".rezultat").innerHTML = "Neveljaven vnos!";
+                    return;
+                }
+
+                // Izračun in prikaz
+                document.querySelector(".vrednost-a").innerHTML = `Prva: ${steviloA}`;
+                document.querySelector(".vrednost-b").innerHTML = `Druga: ${steviloB}`;
+                document.querySelector(".rezultat").innerHTML = `Rezultat: ${steviloA + steviloB}`;
+            };
+
+            // Klic funkcije
+            izracunaj();
+
+            //✅ Primer: En prompt() z dvema številoma
+            // 🔧 Uporabnik vnese: "4,7" ali "4 7"
+
+            // const izracunaj = () => {
+            // const vnos = prompt("Vnesi dve številki, ločeni z vejico ali presledkom (npr. 4,7 ali 4 7):");
+
+            // // Razbij niz po vejici ali presledku
+            //const deli = vnos.split(/[\s,]+/); // RegExp: presledek ali vejica
+
+            //if (deli.length !== 2) {
+            //         document.querySelector(".rezultat").innerHTML = "Vnesi točno dve številki!";
+            //         return;
+            //     }
+
+            //     const steviloA = parseFloat(deli[0]);
+            //     const steviloB = parseFloat(deli[1]);
+
+            //     if (isNaN(steviloA) || isNaN(steviloB)) {
+            //         document.querySelector(".rezultat").innerHTML = "Vnos mora biti številka!";
+            //         return;
+            //     }
+
+            //     document.querySelector(".vrednost-a").innerHTML = `Prva: ${steviloA}`;
+            //     document.querySelector(".vrednost-b").innerHTML = `Druga: ${steviloB}`;
+            //     document.querySelector(".rezultat").innerHTML = `Rezultat: ${steviloA + steviloB}`;
+            // };
+
+            // izracunaj();
+
+        </script>
+    </body>
+
+</html>

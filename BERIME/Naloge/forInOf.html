@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            const gameScores = {
+                Alice: [10, 15, 20],
+                Bob: [5, 10, 15],
+                Charlie: [20, 25, 30]
+            };
+            // for (const keyPersons in Object.entries(gameScores)) {
+            //     console.log(keyPersons);
+            // }
+            // for (const tocke of Object.values(gameScores)) {
+            //     console.log(tocke)
+            // }
+            // Object.values(gameScores).forEach(value => {
+            //     console.log(value);
+            // });
+
+            // for (const value of Object.values(gameScores)) {
+            //     console.log(value);
+            // }
+
+
+
+            // MAJE KODA//////////
+
+            // let maxPoints;
+
+            // for (const player in gameScores) {
+            //     let totalScore = 0;
+
+            //     for (const score of gameScores[player]) {
+            //         totalScore += score;
+
+            //         maxPoints = Math.max(totalScore);
+            //     }
+
+            //     console.log(`${player}: ${totalScore} points`);
+            //     console.log(maxPoints);
+            // }
+
+            // WAT CHATA KODA///////////////////////
+
+            let maxPoints = 0;
+            let bestPlayer = "";
+
+            for (const player in gameScores) {
+                let totalScore = 0;
+
+                for (const score of gameScores[player]) {
+                    totalScore += score;
+                }
+
+                console.log(`${player}: ${totalScore} points`);
+                if (totalScore > maxPoints) {
+                    maxPoints = totalScore;
+                    bestPlayer = player;
+                }
+            }
+
+            console.log(`\nNajboljši igralec je ${bestPlayer} s ${maxPoints} točkami!`);
+
+            // for (const [player, scores] of Object.entries(gameScores)) {
+            //     let povprecje = [scores.length] - 1 / totalScore;
+            //     console.log(povprecje);
+            // }
+
+            for (const player in gameScores) {
+                let totalScore = 0;
+                const scores = gameScores[player];
+
+                for (const score of scores) {
+                    totalScore += score;
+                }
+
+                const povprecje = totalScore / scores.length;
+
+                console.log(`${player}: skupaj ${totalScore} točk, povprečje ${povprecje.toFixed(2)}`);
+            }
+
+            const fruits = ["apple", "banana", "cherry"];
+
+            for (sadez of fruits) {
+                console.log(sadez)
+            }
+            // for (sadez in fruits) {
+            //     console.log(sadez)
+            // }
+            // console.log(fruits.join(", ")); // "apple, banana, cherry"
+
+            for (const [index, sadez] of fruits.entries()) {
+                console.log(`${index}: ${sadez}`);
+            }
+            // for (const index in fruits) {
+            //     console.log(index);  // vrne 0, 1, 2
+            //     console.log(fruits[index]);  // vrne apple, banana, cherry
+            // }
+
+          ///  .entries JE KEY:PAIR
+        </script>
+    </body>
+
+</html>

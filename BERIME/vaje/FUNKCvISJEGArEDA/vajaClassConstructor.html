@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div class="constructor"></div>
+        <script>
+            // class Vozilo
+            // lastnosti: znamka, model, leto
+            // metoda: opis() → naj vrne "To je vozilo znamke X model Y letnik Z."
+
+            class Vozilo {
+                //  Ročno preverjanje v constructorju:
+
+                /*
+                constructor(znamka, model, leto) {
+                if (typeof znamka !== "string" || typeof model !== "string") {
+                    throw new Error("Znamka in model morata biti niza.");
+                }
+
+                if (typeof leto !== "number" || leto < 1886 || leto > new Date().getFullYear()) {
+                    throw new Error("Neveljavno leto.");
+                }
+
+                this.znamka = znamka;
+                this.model = model;
+                this.leto = leto;
+            }
+                */
+                constructor(znamka, model, leto) {
+                    this.znamka = znamka,
+                        this.model = model,
+                        this.leto = leto
+                }
+                opis() {
+                    return `To je vozilo znamke ${this.znamka} model ${this.model} letnik ${this.leto}.`
+                    // console.log(`To je vozilo znamke ${this.znamka} model ${this.model} letnik ${this.leto}.`);
+                }
+            }
+            // console.log(vozilo.opis);
+            const fiat = new Vozilo("Fiat", "Punto", 2010);
+            console.log(fiat.opis());
+            izbira(fiat);
+
+            function izbira(vozilo) {
+                document.querySelector('.constructor').textContent = vozilo.opis();
+            }
+
+            //class Avto (extends Vozilo)
+            // dodatna lastnost: vrstaGoriva
+            // dodatna metoda: zaganjanje() → "Avto na [gorivo] se zaganja..."
+
+            class Avto extends Vozilo {
+                constructor(znamka, model, leto, vrstaGoriva) {
+                    super(znamka, model, leto);
+                    this.gorivo = vrstaGoriva;
+                }
+                zaganjanje() {
+                    console.log(`Avto na ${this.gorivo} se zaganja...`)
+                }
+            }
+            const volvo = new Avto("Volvo", "neVem", 2015, "Diesel",)
+            console.log(volvo);
+            volvo.zaganjanje();
+
+            class Tovornjak extends Avto {
+                constructor(znamka, model, leto, vrstaGoriva) {
+                    super(znamka, model, leto, vrstaGoriva);
+                }
+            }
+            const scania = new Tovornjak("Scania", "", 2020, "Diesel");
+            console.log(scania);
+            scania.zaganjanje();
+            console.log(scania.opis());
+
+            //🧠 Kaj je instanceof?
+            // x instanceof SomeClass vrne true, če je x bil ustvarjen iz razreda SomeClass ali ga podeduje.
+
+            console.log(scania instanceof Tovornjak); // true
+            console.log(scania instanceof Avto);      // true
+            console.log(scania instanceof Vozilo);    // true
+            console.log(scania instanceof Object);    // true
+            console.log(fiat instanceof Tovornjak);    //false
+            console.log(fiat.leto === 1999);    //false
+
+            const vozila = [
+                { znamka: "Toyota", tip: "Avto", leto: 2020, gorivo: "Bencin" },
+                { znamka: "Scania", tip: "Tovornjak", leto: 2018, gorivo: "Diesel" },
+                { znamka: "Seat", tip: "Pick-up", leto: 2018, gorivo: "Ev" },
+                { znamka: "Seat", tip: "Pick-up", leto: 2018, gorivo: "Ev" },
+                { znamka: "Seat", tip: "Avto", leto: 2018, gorivo: "Diesel" },
+            ];
+
+            const nizVozila = vozila.map(v => `${v.znamka},${v.leto},${v.gorivo}`)
+                .join(",");
+            console.log(nizVozila);
+
+            //REDUCE fore
+            const statistika = vozila.reduce((acc, v) => {
+                acc[v.tip] = (acc[v.tip] || 0) + 1;
+                return acc;
+            }, {});
+            console.log(statistika);
+
+            const letniki = vozila.reduce((acc, v) => {
+                acc[v.tip + " " + v.leto] = (acc[v.tip + " " + v.leto] || 0) + 1;
+                return acc
+            }, {});
+            ///BULŠ 
+            // const letniki = vozila.reduce((acc, v) => {
+            //     const kljuc = `${v.tip} ${v.leto}`;
+            //     acc[kljuc] = (acc[kljuc] || 0) + 1;
+            //     return acc;
+            // }, {});
+
+            //   "Avto 2020": 1,
+            //   "Tovornjak 2018": 1,
+            //   "Avto 2022": 1,
+            //   "Skiro 2022": 2
+            // }
+            // (odvisno od tvojih podatkov)
+            console.log(letniki);
+
+
+            //🧱 1. Gnezdena struktura po tipu in letu
+            // 🎯 Cilj:
+            // Ustvariti objekt oblike:
+            //
+            // {
+            //   Avto: { 2020: 2, 2022: 1 },
+            //   Tovornjak: { 2018: 1 },
+            //   Skiro: { 2022: 2 }
+            // }
+
+
+            const poTipuInLetu = vozila.reduce((acc, v) => {
+                // če tip še ne obstaja, ga ustvari
+                if (!acc[v.tip]) {
+                    acc[v.tip] = {};
+                }
+
+                // če leto še ne obstaja pod tem tipom, ga nastavi na 0
+                if (!acc[v.tip][v.leto]) {
+                    acc[v.tip][v.leto] = 0;
+                }
+
+                // povečaj števec
+                acc[v.tip][v.leto]++;
+
+                return acc;
+            }, {});
+
+
+            //🧾 2. Pretvori v lepe stavke
+            // Zdaj imamo strukturo, jo samo še sprehodimo in oblikujemo nize:
+
+            // ✅ Koda:
+
+            for (let tip in poTipuInLetu) {
+                for (let leto in poTipuInLetu[tip]) {
+                    const st = poTipuInLetu[tip][leto];
+                    const enota = st === 1 ? "primerek" : "primerka";
+                    console.log(`${tip}, letnik ${leto}: ${st} ${enota}`);
+                }
+            }
+
+            //Pojasnilo:
+            // 🔁 for...in zanka:
+
+
+            // for (let tip in poTipuInLetu) {
+            // Sprehodimo se po glavnih tipih vozil (Avto, Skiro, ...)
+
+            // tip je niz (ključ): "Avto", "Tovornjak" itd.
+
+            // 🔁 Notranja zanka — po letnikih:
+
+            // for (let leto in poTipuInLetu[tip]) {
+            // Zdaj se znotraj posameznega tipa sprehodimo po letih (2020, 2022, ...)
+
+            // leto je spet niz (ključ).
+
+            // 🔢 Dostopamo do števila primerkov
+
+            // const st = poTipuInLetu[tip][leto];
+            // Npr. poTipuInLetu["Avto"]["2020"] → 2
+
+            // 📖 Določimo enoto (singular/plural)
+
+            // const enota = st === 1 ? "primerek" : "primerka";
+            // Če je st == 1, uporabi "primerek", sicer "primerka".
+
+            // 🖨️ Izpis z interpolacijo
+
+            // console.log(`${tip}, letnik ${leto}: ${st} ${enota}`);
+            // Uporabimo template literal za lep in berljiv izpis.
+
+            // ✅ Primer končnega izpisa:
+
+
+            // Avto, letnik 2020: 2 primerka
+            // Skiro, letnik 2022: 1 primerek
+        </script>
+    </body>
+
+</html>

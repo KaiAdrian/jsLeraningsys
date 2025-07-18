@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <h3>Pošlji komentar</h3>
+        <input type="text" id="ime" placeholder="Tvoje ime"><br>
+        <input type="email" id="email" placeholder="Email"><br>
+        <textarea id="komentar" placeholder="Komentar"></textarea><br>
+        <button id="poslji">Pošlji</button>
+
+        <div id="izpis"></div>
+
+        <script>
+            const gumb = document.getElementById("poslji");
+            const izpis = document.getElementById("izpis");
+
+            gumb.addEventListener("click", async () => {
+                const ime = document.getElementById("ime").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const komentar = document.getElementById("komentar").value.trim();
+
+                if (!ime || !email || !komentar) {
+                    izpis.textContent = "⚠️ Vsa polja morajo biti izpolnjena!";
+                    return;
+                }
+
+                try {
+                    const odgovor = await fetch("https://jsonplaceholder.typicode.com/comments", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            name: ime,
+                            email: email,
+                            body: komentar
+                        })
+                    });
+
+                    if (!odgovor.ok) {
+                        throw new Error(`Napaka pri pošiljanju: ${odgovor.status}`);
+                    }
+
+                    const rezultat = await odgovor.json();
+                    izpis.textContent = `✅ Komentar uspešno poslan! ID: ${rezultat.id}`;
+                    // console.log(rezultat)
+
+                } catch (err) {
+                    izpis.textContent = `❌ Napaka: ${err.message}`;
+                }
+            });
+
+        </script>
+    </body>
+
+</html>

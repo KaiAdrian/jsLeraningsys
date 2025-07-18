@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            let stevc = 0;
+            let stoparca = setInterval(() => {
+                console.log(`Ob zadnjem znaku bo ${stevc++} sekund!`);
+                if (stevc === 60) {
+                    console.log("Minuta je šla");
+                    pocistiInterval(stoparca);
+                }
+            }, 1000)
+            function pocistiInterval(imeIntervala) {
+                clearInterval(imeIntervala);
+            }           
+        </script>
+    </body>
+
+</html>

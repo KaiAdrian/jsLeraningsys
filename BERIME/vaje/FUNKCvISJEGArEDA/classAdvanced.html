@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            //  2. Osnovni primer class + constructor
+            class Oseba {
+                constructor(ime, starost) {
+                    this.ime = ime;
+                    this.starost = starost;
+                }
+
+                pozdravi() {
+                    console.log(`Živjo, jaz sem ${this.ime} in imam ${this.starost} let.`);
+                }
+            }
+            const jure = new Oseba("Jure", 35);
+            jure.pozdravi(); // Živjo, jaz sem Jure in imam 35 let.
+
+            //🧬 3. Dedovanje z extends in super
+            // Zdaj pa recimo, da imamo še posebno vrsto osebe – recimo programerja.
+
+            class Programer extends Oseba {
+                constructor(ime, starost, jezik) {
+                    super(ime, starost); // pokliče constructor starša
+                    this.jezik = jezik;
+                }
+
+                kodiraj() {
+                    console.log(`${this.ime} piše kodo v ${this.jezik}.`);
+                }
+            }
+
+            const tina = new Programer("Tina", 28, "JavaScript");
+            tina.pozdravi();  // Živjo, jaz sem Tina in imam 28 let.
+            tina.kodiraj();   // Tina piše kodo v JavaScript.
+
+        </script>
+    </body>
+
+</html>

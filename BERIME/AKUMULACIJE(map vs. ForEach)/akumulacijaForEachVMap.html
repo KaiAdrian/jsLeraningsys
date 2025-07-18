@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <title>Primer: forEach, map, reduce</title>
+  <style>
+    body { font-family: sans-serif; }
+    button { margin: 0.5em; padding: 0.5em 1em; }
+    #rezultat { margin-top: 1em; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Akumulacija števil s tremi metodami</h2>
+  <p>Array: [1, 2, 3, 4]</p>
+
+  <button onclick="uporabiForEach()">Uporabi forEach</button>
+  <button onclick="uporabiMap()">Uporabi map</button>
+  <button onclick="uporabiReduce()">Uporabi reduce</button>
+
+  <div id="rezultat"></div>
+
+  <script>
+    const arr = [1, 2, 3, 4];
+
+    function uporabiForEach() {
+      let vsota = 0;
+      arr.forEach(x => vsota += x);
+      prikazi("Vsota (forEach): " + vsota);
+    }
+
+    function uporabiMap() {
+      let vsota = 0;
+      const novi = arr.map(x => {
+        vsota += x;
+        return x * 2;
+      });
+      prikazi("Vsota (v map): " + vsota + " | Novi array: [" + novi.join(", ") + "]");
+    }
+
+    function uporabiReduce() {
+      const vsota = arr.reduce((acc, val) => acc + val, 0);
+      prikazi("Vsota (reduce): " + vsota);
+    }
+
+    function prikazi(besedilo) {
+      document.getElementById("rezultat").textContent = besedilo;
+    }
+  </script>
+</body>
+</html>

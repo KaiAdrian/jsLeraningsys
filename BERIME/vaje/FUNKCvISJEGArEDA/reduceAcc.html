@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            <!-- <script>
+                ✅ PRIMER 1: Seštevanje števil -->
+
+            const stevila = [5, 10, 15];
+
+            const vsota = stevila.reduce((acc, val) => acc + val, 0);
+            // 🔍 Kaj se dogaja:
+            // Krog	acc (akumulator)	val (trenutna vrednost)	acc + val
+            // 1	0	5	5
+            // 2	5	10	15
+            // 3	15	15	30
+
+            // ➡ acc je številka
+            // ➡ val je številka
+            // ➡ funkcija vedno vrne novo število
+            // ➡ zacetnaVrednost = 0
+
+            // Končni rezultat: vsota = 30
+
+            // ✅ PRIMER 2: Štetje po tipu (Avto, Tovornjak)
+
+            const vozila = [
+                { tip: "Avto" },
+                { tip: "Tovornjak" },
+                { tip: "Avto" },
+            ];
+
+            const statistika = vozila.reduce((acc, v) => {
+                acc[v.tip] = (acc[v.tip] || 0) + 1;
+                return acc;
+            }, {});
+            // 🔍 Kaj se dogaja:
+            // Zacetna vrednost:
+
+            // acc = {}  // prazni objekt
+            // | Krog | v.tip | acc[v.tip] | (acc[v.tip] || 0) + 1 | acc po krogu |
+            // |------|--------------|----------------------|------------------------|----------------------------|
+            // | 1 | "Avto" | undefined | 0 + 1 → 1 | { Avto: 1 } |
+            // | 2 | "Tovornjak" | undefined | 0 + 1 → 1 | { Avto: 1, Tovornjak: 1 } |
+            // | 3 | "Avto" | 1 | 1 + 1 → 2 | { Avto: 2, Tovornjak: 1 } |
+
+            // ➡ acc je objekt
+            // ➡ v je trenutni element (objekt)
+            // ➡ acc[v.tip] se poveča za 1
+
+            // 🔍 Kaj pomeni (acc[v.tip] || 0) + 1?
+            // To je trik:
+
+            // Če acc[v.tip] že obstaja, uporabi njegovo vrednost
+
+            // Če še ne obstaja (je undefined), uporabi 0
+
+            // Torej:
+
+
+            // acc["Avto"] = (acc["Avto"] || 0) + 1;
+            // Je isto kot:
+
+
+            // if (!acc["Avto"]) acc["Avto"] = 0;
+            // acc["Avto"]++;
+            // 📌 Primerjava po strukturi:
+            // Lastnost	Seštevanje števil	Štetje po kategorijah
+            // acc je	Število	Objekt {}
+            // val/v je	Število	Objekt { tip: "..." }
+            // Rezultat	acc + val	`acc[v.tip] = (acc[v.tip]
+            // Vrne	Ena vsota	Objekt s štetjem
+        </script>
+
+    </body>
+
+</html>

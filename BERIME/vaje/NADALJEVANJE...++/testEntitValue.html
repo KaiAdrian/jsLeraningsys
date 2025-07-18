@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            class Oseba {
+                constructor(ime, starost, status1, status2) {
+                    this.ime = ime;
+                    this.starost = starost;
+                    this.status1 = status1;
+                    // this.status2 = null; ///TUKI
+                }
+                //////GETTER 
+                get status2() {
+                    return this.starost >= 18;
+                }
+
+                get opisStatusa() {
+                    return this.starost <= 65 ? "zaposlen" : "upokojenec";
+                }
+            }
+
+            const ana = new Oseba("Ana", 28,);
+            console.log(ana.status2);      //   "zaposlen" //brez oklepajev
+            console.log(ana.opisStatusa); //    brez oklepajev
+
+            const tine = new Oseba("tine", 88);
+            console.log(tine.opisStatusa)
+
+            const joze = new Oseba("jože", 34);
+
+
+            ///katere osebe imajo vrednost npr. true
+            //katere so te lastnosti (sploh če so vrednosti na različnih)
+            //naredi array ali objekt z to vsebino
+
+
+////////////////////////////////////////////////////////////////////////////
+            ///////////💬 Razumeš razliko med:
+            // Object.keys(obj) → samo ključe
+
+            // Object.values(obj) → samo vrednosti
+
+            // Object.entries(obj) → [ključ, vrednost] pare (idealno za .filter, for...of, reduce ...)
+
+////////////////////////////////////////////////////////////////////////////
+
+
+            //🎯 Kaj želiš narediti:
+            // Imaš nek objekt (npr. ana), ki ima več lastnosti.
+
+            // Želiš:
+
+            // ugotoviti, katere lastnosti imajo vrednost true (ali neko drugo vrednost, npr. 28)
+
+            // shraniti te ključe ali [ključ + vrednost] v nov array ali object
+
+            const anna = {
+                ime: "Ana",
+                starost: 28,
+                aktivna: true,
+                vSluzbi: true,
+                imaOtroke: false,
+                email: "ana@test.si"
+            };
+
+            // ✅ Primer 1: Katere lastnosti imajo true?
+            const trueLastnosti = [];
+
+            for (const [kljuc, vrednost] of Object.entries(anna)) {
+                if (vrednost === true) {
+                    trueLastnosti.push(kljuc);
+                }
+            }
+
+            console.log(trueLastnosti); // ["aktivna", "vSluzbi"]
+
+            // ✅ Primer 3: Vse lastnosti z vrednostjo true, v obliki novega objekta:
+            const samoTrue = {};
+
+            for (const [k, v] of Object.entries(ana)) {
+                if (v === true) {
+                    samoTrue[k] = v;
+                }
+            }
+
+            console.log(samoTrue); // { aktivna: true, vSluzbi: true }
+
+            // 🎁 BONUS: Funkcija za filtriranje poljubne vrednosti
+            function filtrirajPoVrednosti(objekt, ciljnaVrednost) {
+                const rezultat = {};
+
+                for (const [k, v] of Object.entries(objekt)) {
+                    if (v === ciljnaVrednost) {
+                        rezultat[k] = v;
+                    }
+                }
+
+                return rezultat;
+            }
+
+            console.log(filtrirajPoVrednosti(ana, true)); // { aktivna: true, vSluzbi: true }
+            console.log(filtrirajPoVrednosti(ana, 28));   // { starost: 28 }
+
+
+            // 💬 Razumeš razliko med:
+            // Object.keys(obj) → samo ključe
+
+            // Object.values(obj) → samo vrednosti
+
+            // Object.entries(obj) → [ključ, vrednost] pare (idealno za .filter, for...of, reduce ...)
+
+            
+        </script>
+    </body>
+
+</html>

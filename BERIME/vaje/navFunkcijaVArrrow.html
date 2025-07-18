@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div class="ime"></div>
+        <!-- <div class="div-c"></div> -->
+        <script>
+            // Funkcija za vpis v DOM
+            const domZapis = (ime) => {
+                document.querySelector(".ime").innerHTML = `Pozdravljen/a: ${ime.charAt(0).toUpperCase() + ime.slice(1).toLowerCase()}`;
+            };
+
+            // Arrow funkcija, ki zajame ime in pokliče domZapis
+            const vnosInPrikaz = () => {
+                const vnosIme = prompt("Prosim vpišite svoje ime", "Anonimni");
+                if (vnosIme) {
+                    domZapis(vnosIme);
+                } else {
+                    domZapis("Gost");
+                }
+            };
+            // Klic funkcije
+            vnosInPrikaz();
+
+
+
+
+
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            const plisko = {
+                ime: "testko",
+                starost: 34,
+                vrednostA: true,
+                vrednostB: true,
+                vrednostC: false,
+                vrednostD: true,
+            };
+            let stevec = 0;// če ni inicializirana z začetno vrednostjo (npr. 0), zato stevec++ povzroči NaN.
+            let objectWithValuesTrue = {};
+            let arrWVtrue = []
+
+            for (let [lastnost, value] of Object.entries(plisko)) {
+                if (value === true) {
+                    console.log(lastnost); //vrednostA, vrednostB, vrednostD
+                    arrWVtrue.push(lastnost);
+                    stevec++;
+                    //    
+                    // objectWithValuesTrue ={
+                    //     arrWVtrue,
+                    //     stevec
+                    // }
+                }
+                // Nastavi objekt *enkrat*, po koncu zanke
+                objectWithValuesTrue = {
+                    arrWVtrue,
+                    stevec
+                };
+            }
+
+
+            // console.log(arrWVtrue);
+            console.log(objectWithValuesTrue)
+        </script>
+    </body>
+
+</html>

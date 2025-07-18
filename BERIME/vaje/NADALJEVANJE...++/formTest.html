@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <form id="racunaj">
+            <input type="text" id="vnos1" placeholder="prvo stevilo">
+            <input type="text" id="vnos2" placeholder="drugo stevilo">
+            <button type="submit">Izracunaj</button>
+        </form>
+        <div id="izracun"></div>
+        <script>
+            const form = document.getElementById('racunaj');
+            const steviloA = document.getElementById('vnos1');
+            const steviloB = document.getElementById('vnos2');
+            const izpis = document.getElementById('izracun');
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                 console.log(steviloA.value);
+            });
+           
+        </script>
+    </body>
+
+</html>

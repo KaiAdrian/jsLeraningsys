@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            document.getElementById("pozdravGumb").addEventListener("click", () => {
+                document.getElementById("izpis").textContent = "Klik uspel!";
+            });
+            // 🧠 Kaj se dogaja ?
+            //     addEventListener("click", ...) pomeni: "Ko uporabnik klikne gumb, sproži to funkcijo."
+
+            // V funkciji lahko:
+
+            // izpišeš tekst
+
+            // spremeniš stil
+
+            // izvedeš izračun
+
+            // manipuliraš DOM
+
+            // 🔁 Bonus: isti princip za input, change, keydown, submit
+            // Lahko ti dam:
+
+            // kratek seznam dogodkov
+
+            //             vajo, kjer input spremeni tekst v živo
+
+            // ali nadaljujeva k povezavi: input → objekt → rezultat(npr.mini kalkulator)
+
+
+
+            // 🟦 .innerHTML vs.textContent
+            //Lastnost.innerHTML :                 .textContent:
+            // Kaj vstaviš	HTML kodo ali besedilo	Samo čisto besedilo
+            // Lahko vstaviš < b >, <br>, itd.      //Ne interpretirHTML-ja
+
+            // Malenkost počasnejša, manj varna	     Hitrejša, varnejša
+
+            element.innerHTML = "<b>Pozdravljen!</b>";
+            // prikaže: Pozdravljen! (z odebeljeno pisavo)
+
+            element.textContent = "<b>Pozdravljen!</b>";
+            // prikaže dobesedno: <b>Pozdravljen!</b>
+ 
+        </script>
+    </body>
+
+</html>

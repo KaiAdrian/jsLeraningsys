@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <style>
+        html {
+            font-size: 1rem;
+            font-style: oblique;
+        }
+        /* body{
+            font-size: 15/24px;
+        } */
+
+        select,
+        input,
+        button {
+            width: 10rem;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+
+            background-color: #f9f9f9;
+            margin-left: 10px;
+            transition: border-color 0.2s ease;
+        }
+
+        select:focus {
+            border-color: #007BFF;
+            outline: none;
+            background-color: #fff;
+        }
+
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .select-wrapper {
+            margin: 15px 0;
+        }
+    </style>
+
+    <body>
+        <script>
+            function preveriVse() {
+                const inputi = ["1", "2"];
+                let vrednosti = [];
+
+                inputi.forEach((id) => {
+                    const vrednost = document.getElementById(id).value;
+                    const ciljDiv = document.querySelector(`.div-${id}`);
+
+                    if (vrednost.trim() !== "") {
+                        ciljDiv.innerHTML = `Vnesel si: ${vrednost}`;
+                        vrednosti.push(Number(vrednost));
+                    } else {
+                        ciljDiv.innerHTML = "Polje je prazno.";
+                    }
+                });
+
+                if (vrednosti.length === 2) {
+                    const operacija = document.getElementById("op").value;
+                    const rezultat = racunaj(vrednosti[0], vrednosti[1], operacija);
+                    document.querySelector(".rezultat").innerHTML = `Rezultat: ${rezultat}`;
+                }
+            }
+
+            function racunaj(x, y, operacija) {
+                switch (operacija) {
+                    case "+": return x + y;
+                    case "-": return x - y;
+                    case "*": return x * y;
+                    case "/": return y !== 0 ? x / y : "Deljenje z 0 ni dovoljeno";
+                    default: return "Neznana operacija";
+                }
+            }
+
+        </script>
+        <input type="text" id="1" placeholder="vrednost1">
+        <p style="display: inline-block;margin:15px;">vnesi računsko operacijo:
+            <select name="operant" id="op" style="width: 15rem,">
+                <option value="" disabled selected>Izberi operacijo</option>
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+            </select>
+        </p>
+        <input type="text" id="2" placeholder="vrednost2">
+
+        <button onclick="preveriVse()">Preveri</button>
+        <div class="div-1"></div>
+        <div class="div-2"></div>
+        <div class="rezultat"></div>
+    </body>
+
+</html>

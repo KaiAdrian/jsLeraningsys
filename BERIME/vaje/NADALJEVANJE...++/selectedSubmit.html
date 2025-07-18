@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            select {
+                padding: 10px 23px;
+                font-size: medium;
+                /* border: 0.4px solid; */
+                /* box-sizing: border-box; */
+            }
+
+            #kvadratek {
+                margin-top: 200px;
+                background-color: rgb(183, 183, 90);
+                width: 150px;
+                height: 150px;
+
+
+
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- Navodilo:
+
+Na stran postavi <select> meni z nekaj barvnimi možnostmi (npr. rdeča, modra, zelena).
+Pod menijem naj bo kvadrat.
+Ko uporabnik izbere barvo, naj se kvadrat takoj obarva v izbrano barvo.
+
+🔧 Namigi:
+uporabi change dogodek na <select>
+
+event.target.value ti vrne trenutno izbrano vrednost -->
+        <!-- 
+style.backgroundColor za spremembo barve -->
+        <select name="barve" id="barve">
+            <option value="barva" selected disabled>Izbira barve</option>
+            <option value="modra">Modra</option>
+            <option value="rdeča">Rdeča</option>
+            <option value="viola">Vijolična</option>
+        </select>
+        <div id="kvadratek"></div>
+
+
+        <script>
+            const izbiraBarve = document.getElementById('barve');
+            izbiraBarve.addEventListener('change', () => {
+                console.log(izbiraBarve.value);
+
+                const kvadratek = document.getElementById('kvadratek');
+                let barva;
+                switch (izbiraBarve.value) {
+                    case "modra":
+                        barva = "blue";
+                        break;
+                    case "rdeča":
+                        barva = "red";
+                        break;
+                    case "viola":
+                        barva = "violet";
+                        break;
+                }
+                 kvadratek.style.backgroundColor = barva;
+            });
+           
+        </script>
+    </body>
+
+</html>

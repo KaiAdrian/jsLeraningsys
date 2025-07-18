@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            //         ✅ for...of in for...in zanki
+            // 1. for...of zanka
+            // for...of se uporablja za iteracijo skozi iterabilne objekte, kot so arrayi, nizi, Map, Set itd.
+
+            // Iterira vrednosti (elemente) v zbirki.
+
+        // for (const element of zbirka) {
+        //     // koda za vsak element
+        // }
+            const fruits = ["apple", "banana", "cherry"];
+
+            for (const fruit of fruits) {
+                console.log(fruit);
+            }
+
+            const word = "HELLO";
+
+            for (const char of word) {
+                console.log(char);
+            }
+
+            const uniqueNumbers = new Set([1, 2, 3, 2, 1]);
+
+            for (const num of uniqueNumbers) {
+                console.log(num);
+            }
+
+            // 2. for...in zanka
+            // for...in se uporablja za iteracijo skozi objekte ali arraye, vendar iterira po ključi(indeksi ali lastnosti objekta).
+
+                // Sintaksa:
+            // for (const key in objekt) {
+            //     // koda za vsak ključ
+            // }
+    // Primer 1: Iteracija skozi objekt
+           
+            const person = {
+                name: "John",
+                age: 30,
+                city: "New York"
+            };
+
+            for (const key in person) {
+                console.log(`${key}: ${person[key]}`);
+            }
+            // Izhod:
+            // name: John
+            // age: 30
+            // city: New York  
+            // Primer 2: Iteracija skozi array(indeksi)
+          
+            const colors = ["red", "green", "blue"];
+
+            for (const index in colors) {
+                console.log(`Index: ${index}, Value: ${colors[index]}`);
+            }
+
+            // Izhod:
+        
+            // Index: 0, Value: red
+            // Index: 1, Value: green
+            // Index: 2, Value: blue
+
+        </script>
+    </body>
+
+</html>

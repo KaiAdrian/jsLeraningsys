@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Akuumlacija oktav</title>
+        <script>
+            function oktavUpp(zacVrednost) {
+                const maxVrednost = 5000;
+
+                while (zacVrednost <= maxVrednost) {
+                    console.log(`Frekvenca: ${zacVrednost.toFixed(4).replace(".", ",")} Hz`);
+                    // izpis();
+                    zacVrednost *= 2; // Povečaj za oktavo
+
+                    
+                }
+            }
+            let zac = parseFloat(prompt("Vnesi začetno frekvenco(Uporabi piko,namesto vejice!):"));
+            oktavUpp(zac); // Omejitev na 5000 Hz
+
+            // // function izpis(){
+            // //     console.log(`Frekvenca: ${zacVrednost.toFixed(4).replace(".", ",")} Hz`);
+            // document.querySelector('.izpis').innerHTML=`Frekvenca: ${zacVrednost.toFixed(4).replace(".", ",")} Hz`
+            // // }
+            
+            
+        </script>
+    </head>
+
+    <body>
+        <h1>Akuumlacija oktav</h1>
+        <div class="izpis"></div>
+    </body>
+
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            function pozdraviUporabnika(ime) {
+                console.log(`Pozdravljen,${ime}!`);
+            }
+            pozdraviUporabnika('Luka');//klic
+
+            function kvadrat(stevilo) {
+                return stevilo * stevilo;
+            }
+            // ARROW const kvadrat = stevilo => stevilo * stevilo;
+            const rezultat = kvadrat(5);
+            console.log(rezultat); // 25
+
+            function povrsinaPravokotnika(a = 1, b = 1) {
+                return a * b;
+            }
+            console.log(povrsinaPravokotnika());
+            console.log(povrsinaPravokotnika(4, 2));
+
+
+            function oceni(tocke) {
+                let rezultat;
+                if (tocke >= 90) {
+                    rezultat = "Odlično";
+                } else if (tocke >= 70) {
+                    rezultat = "Dobro";
+                } else if (tocke >= 50) {
+                    rezultat = "Zadostno";
+                } else {
+                    rezultat = "Nezadostno";
+                }
+                return rezultat;
+            }
+            console.log(oceni(95)); // "Odlično"
+            console.log(oceni(72)); // "Dobro"
+            console.log(oceni(51)); // "Zadostno"
+            console.log(oceni(33)); // "Nezadostno"
+
+            //             ✅ Primer: Funkcija za površino pravokotnika z enoto
+            // Naredimo funkcijo, ki:
+
+            // sprejme 3 parametre:
+
+            //             sirina
+
+            //             visina
+
+            //             enota(npr. "cm²", "m²", "px" itd.)
+
+            // ima privzeto enoto, če tretji parameter ni podan
+
+            // vrne rezultat z enoto(npr. "20 cm²")
+
+            // 🔧 Primer rešitve:
+
+            function povrsinaPravokotnika(sirina = 1, visina = 1, enota = "cm²") {
+                const povrsina = sirina * visina;
+                return `${povrsina} ${enota}`;
+            }
+            // 🧪 Testi:
+
+            console.log(povrsinaPravokotnika(5, 4));           // "20 cm²"
+            console.log(povrsinaPravokotnika(3, 2, "m²"));      // "6 m²"
+            console.log(povrsinaPravokotnika());                // "1 cm²"
+
+            function povrsinaKvadrata(stranica, enota = "m^2") {
+                if (!stranica) {
+                    console.log("Prosim, vpišite mero!");
+                    return;
+                }
+                console.log(`${stranica * stranica} ${enota}`);
+            }
+            povrsinaKvadrata(5);             // "25 m²"
+            povrsinaKvadrata(4, "cm²");      // "16 cm²"
+            povrsinaKvadrata();              // Na voljo je več možnosti (lahko vrneš 1 m² ali opozoriš)
+
+            // FUNKCIJA NAJ RAJE VRNE VREDNOST!!!!!!!!!!, 
+            // da jo lahko kasneje uporabiš, npr.:
+
+            //    .............
+            //   if (!stranica) {
+            //     return "Prosim, vpišite mero!";
+            //   }
+            //   return `${stranica * stranica} ${enota}`;
+            // }
+
+            // console.log(povrsinaKvadrata(5));    // 25 m²
+            // console.log(povrsinaKvadrata());     // Prosim, vpišite mero!
+
+            function baterijaStatus(nivo) {
+                switch (true) {
+                    case (nivo > 100 || nivo < 0 || isNaN(nivo)):
+                        return "Neveljaven vnos";
+                    case (nivo >= 80):
+                        return "Baterija je polna";
+                    case (nivo >= 50):
+                        return "Baterija je skoraj polna";
+                    case (nivo >= 20):
+                        return "Baterija je nizka";
+                    case (nivo > 0):
+                        return "Baterija skoraj prazna";
+                    case (nivo === 0):
+                        return "Poveži polnilec!";
+                    default:
+                        return "Neznano stanje";
+                }
+            }
+            // 🎯 Kaj si se naučil?
+            // switch(true) je napredna oblika, ki posnema if/else if logiko.
+
+            // Uporabno je, kadar želiš ohraniti strukturo switch, a potrebuješ logične izraze.
+
+            console.log(baterijaStatus(100));  // "Baterija je polna"
+            console.log(baterijaStatus(65));   // "Baterija je skoraj polna"
+            console.log(baterijaStatus(35));   // "Baterija je nizka"
+            console.log(baterijaStatus(5));    // "Baterija skoraj prazna"
+            console.log(baterijaStatus(0));    // "Poveži polnilec!"
+            console.log(baterijaStatus(150));  // "Neveljaven vnos"
+
+            // function opisTemperature(temp) {
+            //     switch (true) {
+            //         case (isNaN(temp) ||undefined):
+            //             return "Neveljavna Temperatura";
+            //         case (temp > 35):
+            //             return "Zelo vroče";
+            //         case (temp >= 25):
+            //             return "Toplo";
+            //         case (temp >= 15):
+            //             return "Prijetno";
+            //         case (temp >= 5):
+            //             return "Sveže";
+            //         case (temp >= -10):
+            //             return "Mrzlo";
+            //         case (temp < -10):
+            //             return "Zelo mrzlo";
+            //     }
+            // }
+            function opisTemperature(temp) {
+                //                 Super, zelo dobro si sestavil funkcijo! 👏 Deluje, vendar vsebuje eno manjšo, a pomembno logično napako v tej vrstici:
+                // if (isNaN(temp) || undefined)
+
+                /*POPRAVEK/*/
+                if (typeof temp !== "number" || isNaN(temp)) /*POPRAVEK/*/ {
+                    return "Neveljavna temperatura";
+                } else
+                    switch (true) {
+                        case (temp > 35):
+                            return "Zelo vroče";
+                        case (temp >= 25):
+                            return "Toplo";
+                        case (temp >= 15):
+                            return "Prijetno";
+                        case (temp >= 5):
+                            return "Sveže";
+                        case (temp >= -10):
+                            return "Mrzlo";
+                        case (temp < -10):
+                            return "Zelo mrzlo";
+                    }
+            }
+
+
+            console.log(opisTemperature(40));   // Zelo vroče
+            console.log(opisTemperature(30));   // Toplo
+            console.log(opisTemperature(20));   // Prijetno
+            console.log(opisTemperature(10));   // Sveže
+            console.log(opisTemperature(0));    // Mrzlo
+            console.log(opisTemperature(-15));  // Zelo mrzlo
+            console.log(opisTemperature("abc"));// Neveljavna temperatura
+            console.log(opisTemperature());     // Neveljavna temperatura
+            // Potem bo temp imela vrednost undefined.
+
+            // Če v if-pogoj napišeš:
+            // if (isNaN(temp) || undefined)
+            // to ne preveri pravilno, ker undefined ni pogoj — je le vrednost.
+            // Zato se moraš izrecno vprašati:
+            // if (temp === undefined)
+            // ali še bolje:
+            // if (typeof temp !== "number" || isNaN(temp))
+
+            // Tako zajameš primere kot:
+            // opisTemperature()
+            // opisTemperature("abc")
+            // opisTemperature(null)
+
+        </script>
+    </body>
+
+</html>

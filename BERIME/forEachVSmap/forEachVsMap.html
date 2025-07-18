@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Razlika med map() in forEach()</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .output { margin-top: 10px; background: #f5f5f5; padding: 10px; border-radius: 5px; }
+    code { background: #eee; padding: 2px 4px; border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <h1>Razlika med <code>map()</code> in <code>forEach()</code></h1>
+
+  <p>Originalni array: <code>[1, 2, 3, 4]</code></p>
+
+  <button onclick="uporabiForEach()">Uporabi forEach()</button>
+  <div class="output" id="foreach-output"></div>
+
+  <button onclick="uporabiMap()">Uporabi map()</button>
+  <div class="output" id="map-output"></div>
+
+  <script>
+    const stevila = [1, 2, 3, 4];
+
+    function uporabiForEach() {
+      let rezultat = '';
+      stevila.forEach(x => {
+        rezultat += `x * 2 = ${x * 2}<br>`;
+      });
+      document.getElementById("foreach-output").innerHTML = rezultat;
+    }
+
+    function uporabiMap() {
+      const noviArray = stevila.map(x => x * 2);
+      document.getElementById("map-output").innerHTML =
+        `Nov array: [${noviArray.join(", ")}]`;
+    }
+  </script>
+</body>
+</html>

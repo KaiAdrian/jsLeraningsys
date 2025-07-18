@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            //         const oceni = (ocena) => {
+            //     if (ocena >= 90) return "odlično";
+            //     if (ocena >= 80) return "prav dobro";
+            //     if (ocena >= 75) return "dobro";
+            //     if (ocena >= 60) return "zadostno";
+            //     return "nezadostno";
+            // };
+
+            // let ocena = 100;
+            // let rezultat = oceni(ocena);
+            // console.log(rezultat);
+
+
+            ////še krajše
+            let ocena = 81;
+
+            const oceni = (ocena) =>
+                ocena >= 90 ? "odlično" :
+                    ocena >= 80 ? "prav dobro" :
+                        ocena >= 75 ? "dobro" :
+                            ocena >= 60 ? "zadostno" : "nezadostno";
+
+
+            let rezultat = oceni(ocena);
+            console.log(rezultat);
+        </script>
+    </body>
+
+</html>

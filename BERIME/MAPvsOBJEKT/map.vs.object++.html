@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <title>Primerjava: Map vs Objekt</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 90%;
+      margin-top: 20px;
+      font-family: sans-serif;
+    }
+    th, td {
+      border: 1px solid #999;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    td:first-child {
+      font-weight: bold;
+      background-color: #fafafa;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Primerjava: <code>Map</code> vs Objekt <code>{}</code></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Lastnost</th>
+      <th><code>Map</code></th>
+      <th>Objekt <code>{}</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Dodajanje vrednosti</td>
+      <td><code>.set("ključ", vrednost)</code></td>
+      <td><code>obj["ključ"] = vrednost</code> ali <code>obj.ključ = vrednost</code></td>
+    </tr>
+    <tr>
+      <td>Pridobivanje</td>
+      <td><code>.get("ključ")</code></td>
+      <td><code>obj["ključ"]</code> ali <code>obj.ključ</code></td>
+    </tr>
+    <tr>
+      <td>Ohrani vrstni red</td>
+      <td>✅</td>
+      <td>❌ (v novejšem JS delno, a ne zanesljivo)</td>
+    </tr>
+    <tr>
+      <td>Poljuben tip ključa (npr. objekt)</td>
+      <td>✅</td>
+      <td>❌ (samo string ali symbol)</td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

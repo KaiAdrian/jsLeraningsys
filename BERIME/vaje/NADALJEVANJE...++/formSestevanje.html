@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <form id="racunaj">
+            <input type="text" id="vnos1" placeholder="prvo stevilo">
+            <input type="text" id="vnos2" placeholder="drugo stevilo">
+            <select name="operant" id="operant" style="padding:1px 8px; font:900 16px ;" id="op">
+                <option value="+" selected>+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+            </select>
+            <button type="submit">Izracunaj</button>
+        </form>
+        <div id="izracun"></div>
+        <script>
+            const form = document.getElementById('racunaj');
+            const steviloA = document.getElementById('vnos1');
+            const steviloB = document.getElementById('vnos2');
+            const izpis = document.getElementById('izracun');
+            const operant = document.getElementById('operant');
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                let a = Number(steviloA.value);
+                let b = Number(steviloB.value);
+
+                if (isNaN(a) || isNaN(b))  {
+                    izpis.textContent = "Vnesi veljavni števili!";
+                    izpis.style.color = "red";
+                    return;
+                }
+
+                const racun = () => {
+                    switch (operant.value) {
+                        case "-":
+                            result = a - b;
+                            break;
+                        case "*":
+                            result = a * b;
+                            break;
+                        case "/":
+                            result = b === 0 ? "Napaka: deljenje z 0!" : a / b;
+                            break;
+                        default:
+                            result = a + b;
+                    }
+
+                    // let result = a + operant.value + b;
+                    return result
+                }
+                izpis.style.color = "green";
+                izpis.textContent = racun()
+            });
+
+        </script>
+    </body>
+
+</html>

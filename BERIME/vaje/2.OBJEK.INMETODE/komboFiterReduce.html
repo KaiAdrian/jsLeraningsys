@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            //         🧠 Mini izziv: kombinacija filter + map + reduce
+            // Iz arrayja [4, 9, 13, 17, 22]:
+
+            // obdrži samo števila večja od 10
+
+            // vsako pomnoži ×2
+
+            // izračunaj vsoto rezultatov
+
+            const arrOrigin = [4, 9, 13, 17, 22];
+            // const arrModify = arrOrigin.filter(el => el > 10 && el * 2);
+            const arrModify = arrOrigin.filter(el => el > 10)
+            console.log(arrModify); //13,17,22
+
+            // arrModify.forEach((el)=> {return el*2});
+            let arrModiMap = arrModify.map(el => el * 2);
+            console.log(arrModiMap);//*2
+
+            //         const result = arrModiMap.reduce((acc, el) => acc + el, 0);
+            //         console.log(result);
+
+            // ✅ Logično, čisto, ločeno po korakih — zelo berljivo, super za učenje.
+
+            // 🔧 Če želiš bolj funkcionalen(enovrstičen) zapis:
+
+            //         const result = arrOrigin
+            //             .filter(el => el > 10)
+            //             .map(el => el * 2)
+            //             .reduce((acc, el) => acc + el, 0);
+
+            console.log(result); // 104
+
+        </script>
+    </body>
+
+</html>

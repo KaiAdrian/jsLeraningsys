@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <input type="number" id="steviloA" placeholder="Vnesi prvo število">
+        <input type="number" id="steviloB" placeholder="Vnesi drugo število">
+        <button onclick="izracunaj()">Izračunaj</button>
+
+        <div class="rezultat"></div>
+
+        <script>
+            const podatki = {
+                a: 0,
+                b: 0,
+                rezultat: 0,
+
+                izracun() {
+                    this.rezultat = this.a + this.b;
+                }
+            };
+
+            function izracunaj() {
+                const vnosA = Number(document.getElementById("steviloA").value);
+                const vnosB = Number(document.getElementById("steviloB").value);
+
+                podatki.a = vnosA;
+                podatki.b = vnosB;
+
+                podatki.izracun();
+
+                document.querySelector(".rezultat").textContent = `Rezultat: ${podatki.rezultat}`;
+            }
+
+
+  //             🧠 Kdaj uporabiti kaj ?
+  
+  //           Primer:	               Uporabi parametre     Uporabi objekt
+  //           Hitri izračun	                    ✅              ❌
+  //           Večkratna raba vrednosti	            ❌	           ✅
+  //           Povezava z DOM(inputi, izpisi)       ❌              ✅
+  //           Kompleksne strukture(oseba, izdelek) ❌	           ✅
+
+
+
+
+  
+        </script>
+    </body>
+
+</html>

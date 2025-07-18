@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            // let stevec=1;
+            // for (let j = 0; j <= 20; j++) {
+            //     console.log( [j]);
+            //     stevec+=2;
+            //     console.log(stevec);
+            // }
+            const fruits = ["apple", "banana", "cherry"];
+
+            for (let i = 0; i < fruits.length; i++) {
+                console.log(fruits[i]);
+            }
+            for (let i = 0; i < 10; i++) {
+                if (i === 5) {
+                    console.log("Zanka se prekine pri:", i);
+                    break;
+                }
+                console.log(i);
+            }
+            for (let i = 0; i < 5; i++) {
+                if (i === 2) {
+                    console.log("Preskok pri:", i);
+                    continue;
+                }
+                console.log(i);
+            }
+            for (let i = 3; i < 60; i++) {
+                if (i % 3 != 0) {
+                    continue;
+                }
+                console.log(i + ": je deljivo s 3");
+            }
+
+            //             ✅ Primerjava med for in while zanko v JavaScriptu
+            //             1. Kdaj uporabiti for?
+            //                 Število ponovitev je vnaprej znano: Če veš, kolikokrat se bo zanka ponovila(npr.iteriranje skozi array).
+
+            //             Kratka in pregledna koda: Vse tri komponente(inicializacija, pogoj, posodobitev) so na enem mestu.
+
+            // Iteracija preko podatkov: Uporabna za delo z nizi, arrayi ali kadar potrebuješ štetje.
+
+            //                 Primer:
+
+            for (let i = 0; i < 5; i++) {
+                console.log(i);
+            }
+
+            //             2. Kdaj uporabiti while?
+            // Število ponovitev ni znano: Če zanka teče, dokler se določen pogoj ne spremeni.
+
+            // Neznana dolžina podatkov: Kadar bereš podatke iz neznanega vira (npr. branje iz datoteke).
+
+            // Lepša logična kontrola: Pogoj je ločen od inicializacije in posodobitve, kar omogoča večjo prilagodljivost.
+
+            // Primer:
+
+            let x = 0;
+            while (x < 5) {
+                console.log(x);
+                x++;
+            }
+
+            //             ✅ do...while zanka
+            // do...while zanka je podobna while, vendar se njena vsebina vedno izvede vsaj enkrat, ne glede na to, ali je pogoj true ali false.
+
+            // Sintaksa:
+            // do {
+                // koda, ki se izvede vsaj enkrat
+            // } while (pogoj);
+            // Primer 1: Preprosta do...while zanka
+            // javascript
+
+            let i = 0;
+
+            do {
+                console.log(i);
+                i++;
+            } while (i < 3);
+
+            // Primer 3: Uporaba break v do...while zanki
+
+            let count = 0;
+
+            do {
+                console.log("Številka:", count);
+                count++;
+
+                if (count === 3) {
+                    console.log("Zanka se prekine.");
+                    break;
+                }
+            } while (count < 10);
+
+
+            // Primer 4: Uporaba continue v do...while zanki
+
+            let num = 0;
+
+            do {
+                num++;
+
+                if (num === 2) {
+                    console.log("Preskočimo:", num);
+                    continue;
+                }
+
+                console.log(num);
+            } while (num < 5);
+
+
+        </script>
+    </body>
+
+</html>

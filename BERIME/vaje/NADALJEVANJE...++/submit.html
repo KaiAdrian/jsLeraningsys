@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <!-- ✅ Naloga 6: Preverjanje obrazca ob pošiljanju
+Navodilo:
+
+Ustvari preprost obrazec z:
+
+enim poljem za vnos imena (<input type="text">)
+
+gumbom za oddajo (<button type="submit">)
+
+praznim <div> za izpis rezultata
+
+Ko uporabnik klikne “Pošlji”, naj se:
+
+prepreči dejansko pošiljanje (uporabi event.preventDefault())
+
+preveri, če je ime prazno:
+
+če je prazno, naj se izpiše: "Vnesi ime!" (v rdeči barvi)
+
+če ni prazno, naj se izpiše: "Pozdravljen, [ime]!" (v zeleni barvi) -->
+        <style>
+            #izpis {
+                margin-top: 10px;
+            }
+
+            .niImena {
+                color: red;
+            }
+
+            .jeIme {
+                color: green;
+            }
+        </style>
+    </head>
+
+    <body>
+        <form id="ime-form">
+            <input type="text" id="vnos" placeholder="Vnesi ime">
+            <button type="submit">Pošlji</button>
+        </form>
+        <div id="izpis"></div>
+
+        <script>
+            const form = document.getElementById('ime-form');
+            const vnos = document.getElementById('vnos');
+            const izpis = document.getElementById('izpis');
+            // const vnos = document.getElementById('vnos');
+            // const izpis = document.getElementById('izpis');
+            form.addEventListener('submit', (event) => {
+                event.preventDefault(); // prepreči osvežitev strani
+
+                const ime = vnos.value.trim();
+                // vnos.addEventListener('input', () => {
+                //     vnos.onsubmit() = izpis.innerHTML = `Pozdravljeni! ${input.value}`;
+                // })
+                if (ime===""||!/^[a-zA-ZčćšžđČĆŠŽĐ\s\-]+$/.test(ime)) {
+                    izpis.textContent = "Vnesi veljavno ime (samo črke)!";
+                    izpis.style.color = "red";
+                }else{
+                    izpis.textContent=`Pozdravljeni ${ime}!`;
+                    izpis.style.color="green";
+                }
+            })
+        </script>
+    </body>
+
+</html>

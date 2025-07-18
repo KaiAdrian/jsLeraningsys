@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            //✅ Navodilo:
+            // Napiši funkcijo ustvariMnozilnik, ki sprejme število n in vrne novo funkcijo,
+            //ki nato vsako podano vrednost x pomnoži z n.
+
+            // const krat3 = ustvariMnozilnik(3);
+            // console.log(krat3(5)); // 15
+
+            // const krat10 = ustvariMnozilnik(10);
+            // console.log(krat10(7)); // 70
+
+            function ustvariMnozilnik(n) {
+                return ((x) => {
+                    return x * n;
+                })
+            }
+            const vrni4 = ustvariMnozilnik(4);
+            console.log(vrni4(13));
+            console.log(vrni4(10));
+            console.log(vrni4(0.5));
+
+            const vrni5 = ustvariMnozilnik(5);
+            console.log(vrni5(5));//25
+            console.log(vrni5(4));//20
+            console.log(vrni5(-2.5));//-12.5
+
+            // 👉 Kaj se dogaja?
+            // ustvariMnozilnik(4) ustvari funkcijo, ki si zapomni vrednost n (torej 4).
+
+            // Čeprav se ustvariMnozilnik zaključi, funkcija vrni4 še vedno "vidi" n, ker ga je zaprla v t.i. lexical environment.
+
+            // To pomeni: notranja funkcija "nosí s sabo" kontekst (spremenljivke), v katerem je bila ustvarjena.
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            //         🔴 Podatki (osnova):
+            // javascript
+            // Kopiraj
+            // Uredi
+            const fruits = ["apple", "banana", "cherry"];
+
+
+            // 1. ✅ for zanka (klasična)
+            // javascript
+            // Kopiraj
+            // Uredi
+            for (let i = 0; i < fruits.length; i++) {
+                console.log(fruits[i]);
+            }
+            // ➡️ Dober za primere, ko potrebuješ indeks ali želiš nadzor nad korakom (npr. i += 2).
+
+            // 2. ✅ for...of zanka
+            // javascript
+            // Kopiraj
+            // Uredi
+            for (const sadez of fruits) {
+                console.log(sadez);
+            }
+
+            //             3. ✅ for...in zanka
+            // javascript
+            // Kopiraj
+            // Uredi
+            for (const index in fruits) {
+                console.log(`${index}: ${fruits[index]}`);
+            }
+            // ➡️ Deluje, ampak je bolj namenjena za objekte, ne arraye.
+            // ⚠️ Lahko povzroča težave, če array vsebuje dodatne lastnosti.
+            // ➡️ Čisto in enostavno, kadar potrebuješ samo vrednosti.
+
+            // 4. ✅ forEach() metoda
+            // javascript
+            // Kopiraj
+            // Uredi
+            fruits.forEach((sadez, index) => {
+                console.log(`${index}: ${sadez}`);
+            });
+            // ➡️ Zelo berljivo. Dobra izbira, ko želiš vrednosti + indekse in ne potrebuješ break ali return.
+
+            // 5. ✅ map() metoda
+            // javascript
+            // Kopiraj
+            // Uredi
+            const uppercased = fruits.map(sadez => sadez.toUpperCase());
+            console.log(uppercased); // ["APPLE", "BANANA", "CHERRY"]
+            // ➡️ Namenjena za pretvarjanje arraya v nov array.
+        </script>
+    </body>
+
+</html>

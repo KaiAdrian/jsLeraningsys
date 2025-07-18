@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="sl">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JavaScript Metode</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 40px;
+            }
+
+            th,
+            td {
+                border: 1px solid #999;
+                padding: 8px 12px;
+                text-align: left;
+            }
+
+            th {
+                background-color: #f0f0f0;
+            }
+
+            caption {
+                font-weight: bold;
+                margin-bottom: 10px;
+                font-size: 1.2em;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <h1>JavaScript – Metode za Array in Object</h1>
+
+        <table>
+            <caption>Metode za <code>Array</code></caption>
+            <thead>
+                <tr>
+                    <th>Metoda</th>
+                    <th>Opis</th>
+                    <th>Primer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>.forEach()</td>
+                    <td>Izvede funkcijo za vsak element</td>
+                    <td>arr.forEach(x => ...)</td>
+                </tr>
+                <tr>
+                    <td>.map()</td>
+                    <td>Ustvari nov array z rezultati funkcije</td>
+                    <td>arr.map(x => x * 2)</td>
+                </tr>
+                <tr>
+                    <td>.filter()</td>
+                    <td>Vrne elemente, ki ustrezajo pogoju</td>
+                    <td>arr.filter(x => x > 5)</td>
+                </tr>
+                <tr>
+                    <td>.reduce()</td>
+                    <td>Akumulira v eno vrednost</td>
+                    <td>arr.reduce((a, b) => a + b)</td>
+                </tr>
+                <tr>
+                    <td>.find()</td>
+                    <td>Vrne prvi ujemajoči element</td>
+                    <td>arr.find(x => x > 5)</td>
+                </tr>
+                <tr>
+                    <td>.some()</td>
+                    <td>Ali vsaj en ustreza pogoju?</td>
+                    <td>arr.some(x => x > 0)</td>
+                </tr>
+                <tr>
+                    <td>.every()</td>
+                    <td>Ali vsi ustrezajo pogoju?</td>
+                    <td>arr.every(x => x > 0)</td>
+                </tr>
+                <tr>
+                    <td>.includes()</td>
+                    <td>Ali vsebuje vrednost?</td>
+                    <td>arr.includes(3)</td>
+                </tr>
+                <tr>
+                    <td>.sort()</td>
+                    <td>Uredi elemente</td>
+                    <td>arr.sort((a, b) => a - b)</td>
+                </tr>
+                <tr>
+                    <td>.flat()</td>
+                    <td>Splošči ugnezdene arraye</td>
+                    <td>[1, [2]].flat()</td>
+                </tr>
+                <tr>
+                    <td>.findIndex()</td>
+                    <td>Indeks prvega ujemanja</td>
+                    <td>arr.findIndex(x => x == 5)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table>
+            <caption>Metode za <code>Object</code></caption>
+            <thead>
+                <tr>
+                    <th>Metoda</th>
+                    <th>Opis</th>
+                    <th>Primer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Object.keys(obj)</td>
+                    <td>Array ključev</td>
+                    <td>["ime", "starost"]</td>
+                </tr>
+                <tr>
+                    <td>Object.values(obj)</td>
+                    <td>Array vrednosti</td>
+                    <td>["Ana", 25]</td>
+                </tr>
+                <tr>
+                    <td>Object.entries(obj)</td>
+                    <td>Array parov [ključ, vrednost]</td>
+                    <td>[["ime", "Ana"]]</td>
+                </tr>
+                <tr>
+                    <td>Object.fromEntries()</td>
+                    <td>Array parov → objekt</td>
+                    <td>{ a: 1, b: 2 }</td>
+                </tr>
+                <tr>
+                    <td>obj.hasOwnProperty("ime")</td>
+                    <td>Ali obstaja ključ?</td>
+                    <td>true / false</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </body>
+
+</html>

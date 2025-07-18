@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            // function pozdravi(ime) {
+            //     return `Živjo, ${ime}!`;
+            // }
+            // Arrow funkcija – isto:
+
+            // const pozdravi = (ime) => {
+            //     return `Živjo, ${ime}!`;
+            // };
+
+            // 🔹 2. Če je samo 1 parameter, lahko izpustiš oklepaje:
+
+            // const pozdravi = ime => {
+            //     return `Živjo, ${ime}!`;
+            // };
+
+            // 🔹 3. Če je samo 1 vrstica in vsebuje return, lahko vse skrajšaš:
+
+            // const pozdravi = ime => `Živjo, ${ime}!`;
+            // Če želiš zagotoviti, da celoten vnos ni npr. vse z veliko ali vse z malo, potem je dobro dodati še .toLowerCase() za slice(1) del:
+            const pozdravi = (ime) => `Živjo, ${ime}!`;
+
+            // `Živjo, ${ime.charAt(0).toUpperCase() + ime.slice(1)}!`;
+
+            // 🔹 4. Primer z več parametri:
+
+            const zmnozek = (a, b) => a * b;
+            // 🔹 5. Primer brez parametrov:
+
+            const pozdrav = () => console.log("Pozdravljen svet!");
+            pozdravi("Joži");
+            console.log(pozdravi()); //undef
+            console.log(pozdravi("joži"));
+            console.log(pozdravi("medo"));
+            console.log(pozdravi("zajček"));
+            console.log(pozdravi("opica"));
+
+            //             Cannot read properties of undefined (reading 'charAt')
+            // pomeni, da funkciji ni bil podan noben argument — torej ime je bilo undefined.
+
+            const pozdraviI = (ime) => {
+                if (!ime || typeof ime !== "string") {
+                    return "Pozdravljen, neznani uporabnik!";
+                }
+
+                return `Živjo, ${ime.charAt(0).toUpperCase() + ime.slice(1).toLowerCase()}!`;
+            };
+            console.log("");
+            console.log("PRESLIDK");
+            console.log("");
+            console.log(pozdraviI("joži"));
+            console.log(pozdraviI("medo"));
+            console.log(pozdraviI("zajček"));
+            console.log(pozdraviI("opica"));
+
+
+            //             🧪 Vaja: Spremeni te funkcije v arrow obliko:
+            // 🧤 A)
+
+            function kvadratt(x) {
+                return x * x;
+            }
+            const kvadrat = x => x * x;
+
+            // 🧤 B)
+
+            function povzetek(ime, starost) {
+                return `${ime} je star(a) ${starost} let.`;
+            }
+            const povzetekk = (ime, starost) => `${ime} je star(a) ${starost} let.`
+
+            console.log(povzetekk("Medo", 2));
+
+
+            // 🧤 C)
+
+            // function nakljucnaStevilka() {
+            //     return Math.floor(Math.random() * 10);
+            // }
+            const nakljucnaStevilka = () => Math.floor(Math.random() * 10);
+
+            //             💡 Kratko povzetek:
+            // Funkcija	        Parametri	Kaj dela
+            // Math.random()	🚫 ne	    Decimalno število [0, 1)
+            // Math.floor(x)	✔️ da	    Zaokroži navzdol
+            // Math.ceil(x)	    ✔️ da	    Zaokroži navzgor
+            // Math.round(x)	✔️ da	    Zaokroži na najbližje celo
+
+            // 🔄 Če želiš interval, moraš sam izračunati z uporabo:
+
+            // Math.floor(Math.random() * (max - min + 1)) + min;
+
+            // Odlično vprašanje! 👌
+            // Dodatek +1 je ključen, če želiš, da je zgornja meja (to je max) vključena v možne rezultate.
+
+            // 🔍 Poglejmo primer brez +1:
+
+            // Math.floor(Math.random() * (max - min)) + min
+            // To ustvari cela števila od min do max - 1, ker Math.random() nikoli ne doseže 1 – je vedno manj.
+
+            console.log(nakljucnaStevilka());//rnd cifra
+            console.log(nakljucnaStevilka());//rnd cifra
+
+            console.log(Math.floor(Math.random() * (100 - 0))); /*med 0 in 99  */
+
+            console.log(Math.floor(Math.random() * (100 - 0 + 1))); /*med 0 in 100
+            */
+
+            //Super! 🎲 Če razmišljaš o metu kocke, potem želiš naključno celo število od 1 do 6 (vključno). Tukaj je točno, kako to narediš v JavaScriptu:
+
+            // ✅ Osnovna funkcija za met kocke:
+
+            const vrziKocko = () => Math.floor(Math.random() * 6) + 1;
+            // 🔍 Razlaga:
+            // Math.random() → decimalno število med 0 in 1
+
+            //     * 6 → decimalno med 0 in 5.999...
+
+            // Math.floor(...) → cela števila med 0 in 5
+
+            //     + 1 → rezultat od 1 do 6
+            console.log(`Vrzi kocko ${vrziKocko()}`);
+        </script>
+    </body>
+
+</html>

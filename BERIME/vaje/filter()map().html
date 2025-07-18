@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            //VAJA FILTER()
+
+            // const numbers = [3, 8, 12, 5, 25, 7, 19, 2];
+            // const filtrirano = numbers.filter((num) => num > 10);
+            // //console.log(numbers);
+            // console.log(`filter: ${filtrirano}`);
+
+            //VAJA FILTER IN MAP
+
+            const numbers = [3, 8, 12, 5, 25, 7, 19, 2];
+
+            const filterArr = numbers.filter((num) => num > 10)
+            // console.log(filterArr)
+            const rezultat = filterArr.map((num) => num * 2);
+            console.log(rezultat);
+
+
+            ///ALTERNATIVA ( od ChatGpt )
+
+            // const rezultat = numbers
+            //     .filter(num => num > 10)
+            //     .map(num => num * 2);
+
+            
+
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            // function vrniVrednost(para) {
+            //     return para * 10;
+            // }
+            // let vnos = prompt("vpiši število");
+            // let vpis = Number(vnos);
+            // console.log(vnos);
+            // console.log(vpis * 2);
+            // console.log(vrniVrednost(vpis));
+            function nested(para) {
+                let stevec = 0;
+
+                const interval = setInterval(() => {
+                    console.log("Joži je lepa!");
+                    stevec++;
+                    if (stevec >= 34) {
+                        clearInterval(interval);
+                        console.log("34 krat!");
+                    }
+                });
+            }
+            nested(1000);
+
+            let rezultat;
+            let ocena = 77;
+
+            switch (true) {
+                case ocena >= 90:
+                    rezultat = "odlično";
+                    break;
+                case ocena >= 80:
+                    rezultat = "prav dobro";
+                    break;
+                case ocena >= 75:
+                    rezultat = "dobro";
+                    break;
+                case ocena >= 60:
+                    rezultat = "zadostno";
+                    break;
+                default:
+                    rezultat = "nezadostno";
+            }
+            console.log(rezultat);
+
+            // poenostavljeno
+
+            function oceni(ocena) {
+                if (ocena >= 90) return "odlično";
+                if (ocena >= 80) return "prav dobro";
+                if (ocena >= 75) return "dobro";
+                if (ocena >= 60) return "zadostno";
+                return "nezadostno";
+            }
+
+
+            let result = oceni(ocena);
+            console.log("result :" + result);
+
+            console.log(oceni(ocena = 2));
+        </script>
+    </body>
+
+</html>

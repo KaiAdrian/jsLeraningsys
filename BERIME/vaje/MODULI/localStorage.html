@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            localStorage.setItem("ključ", "vrednost");  // shrani
+            localStorage.getItem("ključ");             // preberi
+            localStorage.removeItem("ključ");          // izbriši enega
+            localStorage.clear();                      // izbriši vse
+
+
+            // 🛠️ Primer – shrani uporabniške podatke:
+            const uporabnik = {
+                ime: "Cris",
+                email: "cris@example.com",
+                starost: 35
+            };
+
+            localStorage.setItem("uporabnik", JSON.stringify(uporabnik));
+
+            // ✅ Preberi:
+            const podatki = localStorage.getItem("uporabnik");
+
+            if (podatki) {
+                const uporabnik = JSON.parse(podatki);
+                console.log(uporabnik.ime); // "Cris"
+            }
+
+            
+
+        </script>
+    </body>
+
+</html>

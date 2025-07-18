@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            let globalna = 4;
+            let modifGlob = 10;
+
+            function vrniVrednost() {
+                return 5 * globalna;
+            }
+
+            let pridobi = vrniVrednost();
+            console.log(pridobi);
+
+            console.log(pridobi + modifGlob);
+
+            function spremeniGlob() {
+                let vnosUporabnik = prompt("Vnesi vrednost:");
+                let stevilo = Number(vnosUporabnik); // pravilna pretvorba
+                if (!isNaN(stevilo)) {
+                    modifGlob = stevilo+10;
+                console.log("Uspešno spremenjeno")    
+                } else {
+                    console.log("Vnesena ni bila številka.");
+                }
+            }
+
+            spremeniGlob();
+
+            console.log(modifGlob);
+  
+            
+            
+        </script>
+    </body>
+
+</html>

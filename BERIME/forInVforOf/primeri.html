@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            //Primeri uporabe for...in vs for...of
+            //    Primer 1: Iteracija skozi array:
+            const fruits = ["apple", "banana", "cherry"];
+
+            // `for...in`
+            console.log("for...in:");
+            for (const index in fruits) {
+                console.log(`Index: ${index}, Value: ${fruits[index]}`);
+            }
+
+            console.log("\nfor...of:");
+            for (const fruit of fruits) {
+                console.log(`Value: ${fruit}`);
+            }
+            // Pojasnilo:
+
+            // for...in iterira po indeksih (0, 1, 2).
+
+            // for...of iterira po vrednostih (apple, banana, cherry).
+
+
+        </script>
+    </body>
+
+</html>

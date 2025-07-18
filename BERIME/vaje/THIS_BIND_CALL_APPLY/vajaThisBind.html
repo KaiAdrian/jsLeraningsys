@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            const oseba = {
+                ime: "Lana",
+                predstavi(seznamek) {
+                    console.log(`Živjo, sem ${this.ime}. Moji hobiji: ${seznamek.join(", ")}`);
+                }
+            };
+
+            const drugaOseba = { ime: "Marko" };
+            const hobiji = ["programiranje", "šport", "potovanja"];
+
+            // const predstaviMarka = oseba.predstavi.bind();
+            // predstaviMarka.apply(drugaOseba, [hobiji]);
+
+
+
+            // function pozdrav(ime) {
+            //     ime = oseba.predstavi.bind();
+            // }
+            // pozdrav(predstaviMarka.apply(drugaOseba, [hobiji]));
+
+            // ✅ Popravljena rešitev:
+
+            const predstaviMarka = oseba.predstavi.bind(drugaOseba);
+            predstaviMarka(hobiji); // deluje OK
+            // Če želiš apply, ni potrebe po bind:
+
+
+            oseba.predstavi.apply(drugaOseba, [hobiji]); // deluje OK 
+        </script>
+    </body>
+
+</html>

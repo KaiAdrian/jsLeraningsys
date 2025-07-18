@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            body {
+                font: 20px bold;
+            }
+
+            .potrdi {
+                margin-left: 10px;
+                padding: 5px 15px;
+                font-family: inherit;
+                font: inherit;
+                border: none;
+                border-radius: 13px;
+                background-color: rgba(93, 153, 206, 0.9);
+                color: white;
+                letter-spacing: 1.1px;
+                transition: background-color 0.4s ease, transform 0.2s ease;
+                cursor: pointer;
+            }
+
+            .potrdi:hover {
+                background-color: rgb(36, 104, 164);
+                transform: scale(1.03);
+
+            }
+
+            .izpis {
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+                color: rgb(37, 37, 38);
+                margin-top: 1rem;
+                border-bottom: 3px solid transparent;
+                /* za prehod */
+                transition: border-bottom 0.9s ease;
+            }
+
+            .izpis.true {
+                border-bottom: 6px solid green;
+            }
+
+            .izpis.false {
+                border-bottom: 6px solid red;
+            }
+
+            .izbira-starost {
+                display: flex;
+                gap: 10px;
+                margin-bottom: 1rem;
+            }
+
+            .izbira-starost input[type="radio"] {
+                display: none;
+                /* skrij originalne gumbe */
+            }
+
+            .izbira-starost label {
+                padding: 8px 16px;
+                border-radius: 8px;
+                background-color: #eee;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                font-weight: bold;
+                border: 2px solid transparent;
+            }
+
+            .izbira-starost input[type="radio"]:checked+label {
+                background-color: #5d99ce;
+                color: white;
+                border-color: #366ea2;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div>
+            <p>Prosim vnesite svojo starost:</p>
+            <input type="radio" name="starost" id="mlado" value="false" checked>
+            <label for="mlado">Pod 18</label>
+            <input type="radio" name="starost" id="polnoletni" value="true">
+            <label for="polnoletni">18+</label>
+            <button class="potrdi" onclick="checkAge()">Potrdi</button>
+            <div class="rezultat"></div>
+            <div class="izpis" id="sporocilo"></div>
+            <script>
+                function checkAge() {
+                    let mess;
+                    let vrednosti = document.getElementsByName('starost');
+                    let izbrana;
+                    let ozadje;
+
+                    for (let i = 0; i < vrednosti.length; i++) {
+                        if (vrednosti[i].checked) {
+                            izbrana = vrednosti[i].value;
+                            break;
+                        }
+                    }
+
+                    // Ker je value vedno string, pretvori v boolean:
+                    if (izbrana === "true") {
+                        mess = "Kar privošči si ga!";
+                        sporocilo.classList.remove("false");
+                        sporocilo.classList.add("true");
+                    } else {
+                        mess = "Si še premlad/a.";
+                        sporocilo.classList.remove("true");
+                        sporocilo.classList.add("false");
+                    }
+                    // sporocilo.style.borderBottom = izbrana === "true"
+                    //     ? "3px solid green"
+                    //     : "3px solid red";
+
+                    console.log(mess);
+                    document.getElementById("sporocilo").textContent = mess;
+                }
+                const el = document.querySelector('input');
+                const styles = window.getComputedStyle(el);
+
+                console.log(styles.backgroundColor);
+                console.log(styles.color);
+                console.log(styles.font);
+                console.log(styles.display);
+                console.log(styles.border);
+               
+            </script>
+    </body>
+
+</html>

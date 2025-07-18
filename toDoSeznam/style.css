@@ -1,0 +1,36 @@
+body {
+	/* display: flex;
+	align-items: center; */
+	font-family: sans-serif;
+	max-width: 400px;
+	margin: 1rem auto;
+}
+input,
+button {
+	padding: 0.5rem;
+	/* border:solid green; */
+}
+
+/* #pocisti {
+} */
+
+
+li {
+	display: flex;
+	justify-content: space-between;
+	margin: 0.5rem 0;
+}
+.nizka {
+	color: green;
+}
+.srednja {
+	color: orange;
+}
+.visoka {
+	color: red;
+	font-weight: bold;
+}
+.done {
+	text-decoration: line-through;
+	color: gray;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//         ✅ Kdaj uporabiti katero metodo?
+// Object.values() – kadar potrebuješ samo vrednosti.
+
+// Object.entries() – kadar potrebuješ tako ključe kot vrednosti.
+
+// for...in – kadar moraš iterirati po ključih, a dostopaš do vrednosti z obj[key].
+
+// ✅ 1. Uporaba Object.values() s for...of
+// Object.values() vrne array vseh vrednosti v objektu. Nato lahko uporabiš for...of za iteracijo:
+
+
+const person = {
+  name: "John",
+  age: 30,
+  city: "New York"
+};
+
+for (const value of Object.values(person)) {
+  console.log(value);
+}
+
+// ✅ 2. Uporaba forEach() s Object.values()
+// Če želiš bolj funkcionalen pristop, lahko uporabiš forEach():
+
+
+Object.values(person).forEach(value => {
+  console.log(value);
+});
+
+// ✅ 3. Uporaba for...in z dostopom do vrednosti
+// Če iz nekega razloga moraš uporabiti for...in, lahko tako dostopaš do vrednosti:
+
+// javascript
+// Kopiraj
+// Uredi
+for (const key in person) {
+  console.log(person[key]);
+}
+
+// ✅ 4. Uporaba Object.entries()
+// Če želiš dostopati do tako ključev kot vrednosti, uporabi Object.entries(), ki vrne array parov [key, value]:
+
+// javascript
+// Kopiraj
+// Uredi
+for (const [key, value] of Object.entries(person)) {
+  console.log(`${key}: ${value}`);
+}
+    </script>
+</body>
+</html>

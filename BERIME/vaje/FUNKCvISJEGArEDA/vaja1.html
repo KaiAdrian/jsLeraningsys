@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            // 🧪 Naloga 1: Funkcija kot argument
+            // Navodilo:
+
+            // Napiši funkcijo obdelajStevilo, ki sprejme:
+
+            // število x
+
+            // funkcijo operacija
+
+            // Funkcija naj vrne rezultat klica operacija(x).
+
+            // ✅ Nato naredi 2 različni funkciji:
+
+            // podvoji, ki vrne x * 2
+
+            // koren, ki vrne Math.sqrt(x)
+
+
+
+
+            function obdelajStevilo(x, operacija) {
+                return operacija(x);
+            }
+
+            function podvoji(x) {
+                return x * 2;
+            }
+            function koren(x) {
+                return Math.sqrt(x);
+            }
+            console.log(obdelajStevilo(16, koren)); // 4
+            console.log(obdelajStevilo(7, podvoji)); // 14
+
+
+            //🔧 Alternativa z anonimnimi funkcijami:
+            // Če ne rabiš funkcij posebej poimenovati:
+
+            console.log(obdelajStevilo(25, x => x / 5)); // 5
+            console.log(obdelajStevilo(9, x => x ** 2)); // 81
+
+        </script>
+    </body>
+
+</html>

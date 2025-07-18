@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+
+
+            let stevke = [];
+
+            let i = 0;
+
+            while (i < 42) {
+                // stevke++;
+                i++;
+                stevke.push(i);
+                // stevke=(i-i)+(i+1)
+                // fibo.push(stevke);
+            }
+            console.log(stevke);
+            let fibo = stevke.map((stevka) => {
+              return stevka - 1;  
+            })
+            console.log(fibo)
+
+            let arr = ["a", "b", "c", 4];
+            console.log(arr[0]);//a
+            console.log(arr[0 + 1]);//b
+            console.log(arr[0 + 3]);//4
+            console.log(arr[0 + 5]);//undefined
+            console.log(arr[0 - 1]);//undefined
+            console.log(arr[4 - 2]);//c
+        </script>
+    </body>
+
+</html>

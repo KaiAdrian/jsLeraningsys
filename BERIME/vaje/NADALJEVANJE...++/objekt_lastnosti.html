@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            const oseba = {
+                ime: "TvojeIme",
+                starost: 30,
+                hobiji: ["branje", "šport", "programiranje"],
+
+                predstavitev: function () {
+                    console.log(`Živjo, moje ime je ${this.ime}, star sem ${this.starost} let.`);
+                    console.log("Moji hobiji so:");
+                    this.hobiji.forEach((hobi) => {
+                        console.log("- " + hobi);
+                    });
+                },
+            };
+
+            // Klic metode:
+            oseba.predstavitev();
+
+            // 🔍 Kaj lahko spremeniš:
+            // ✅ ime → tvoje ime
+
+            // ✅ starost → poljubna številka
+
+            // ✅ hobiji → karkoli te zanima
+
+            // ✅ metoda predstavitev() → lahko dodaš še več (npr. "danes sem se naučil...")
+            oseba.ime = "Cris";
+            oseba["starost"] = 41;
+            oseba.hobiji = ["kitara", "programiranje", "borilne veščine", "planinarjenje"];
+            oseba.predstavitev = function () {
+                console.log(`Živjo, moje ime je ${this.ime}, star sem ${this.starost} let.`);
+                console.log("Moji hobiji so:");
+                this.hobiji.forEach((hobi) => {
+                    console.log(hobi);
+                });
+            }
+
+            console.log(oseba.ime);
+            console.log(oseba.starost);
+            console.log(oseba.hobiji);
+            oseba.predstavitev();
+
+            //    Uporabiš krajši zapis, ki je čistejši in bolj naraven za metode:
+
+            // const oseba = {
+            //     ime: "Cris",
+            //     starost: 41,
+            //     hobiji: ["kitara", "programiranje"],
+
+            //     // krajši zapis metode (ni puščična!)
+            //     predstavitev() {
+            //         console.log(`Živjo, moje ime je ${this.ime}, star sem ${this.starost} let.`);
+            //         this.hobiji.forEach(hobi => console.log("- " + hobi));
+            //     }
+            // };
+
+            // oseba.predstavitev();
+
+            /*
+            ⚠️ Pomembno: to ni arrow funkcija — krajši zapis ohrani this, kar je zelo pomembno v kontekstu objekta!
+            */
+
+
+        </script>
+    </body>
+
+</html>

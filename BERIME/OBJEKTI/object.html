@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            let oseba = {
+                ime: "Joži",
+                starost: 30,
+                pozdravi: function () {
+                    console.log("Živjo, jaz sem " + this.ime);
+                }
+            };
+            oseba.pozdravi();
+            console.log(oseba.starost);
+            console.log(oseba.ime);
+
+            oseba.priimek = "Pivk";
+            console.log(oseba)
+
+            let novaIstaOseba = { ...oseba };
+            console.log(novaIstaOseba);
+
+            let drugaOseba = Object.create(oseba);
+            drugaOseba.ime = "Opica";
+            console.log(drugaOseba);
+
+            //t.i. "factory function"
+            function ustvariOsebo(ime, starost) {
+                return {
+                    ime,
+                    starost,
+                    pozdravi() {
+                        console.log("Živjo, sem " + this.ime);
+                    }
+                };
+            }
+
+            let ana = ustvariOsebo("Ana", 25);
+            let luka = ustvariOsebo("Luka", 32);
+
+            // Uporaba class (če greš v OOP stil):
+            class Oseba {
+                constructor(ime, priimek, starost) {
+                    this.ime = ime;
+                    this.priimek = priimek;
+                    this.starost = starost;
+                }
+
+                pozdravi() {
+                    console.log("Hej, sem " + this.ime + " " + this.priimek + " " + "star/a sem:" + this.starost + " " + "let");
+                }
+            }
+
+            let eva = new Oseba("Eva", 28);
+            let opica = new Oseba("Opica", "Pivk", 10);
+            console.log(opica)
+
+            console.log(opica.priimek)
+            opica.pozdravi();
+        </script>
+    </body>
+
+</html>
