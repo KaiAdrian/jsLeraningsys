@@ -43,58 +43,157 @@
 
 
     <script>
+        class Oseba {
+            constructor(ime, starost, spol) {
+                this.ime = ime;
+                this.starost = starost;
+                this.spol = spol;
+            }
+
+            opis() {
+                return `${this.ime}, ${this.starost} let, spol: ${this.spol}`;
+            }
+        }
         document.getElementById("obrazec").addEventListener("submit", function (e) {
             e.preventDefault(); // prepreči reload strani
 
+            /*  🎯 Kaj dela e.preventDefault()?
+            👉 e je "event object", ki predstavlja ta submit dogodek.
+            Metoda preventDefault() prekine privzeto vedenje brskalnika.*/
+
+            //⛔️ Privzeto vedenje brez e.preventDefault():
+            // Ob kliku gumba submit obrazec osveži stran (reload)
+            // Podatki se poskusijo poslati nekam (če imaš action=... v <form>)
+
             const ime = document.getElementById("ime").value.trim();
             const starost = Number(document.getElementById("starost").value);
-            const spol = document.querySelector('input[name="spol"]:checked')?.value;
+            const spol = document.querySelector('input[name="spol"]:checked')?.value;/*najdi input z atributom name="spol"
+        ki je trenutno izbran (checked) → torej radio gumb 
+
+        ❓ Kaj pa ?.value?
+        če je querySelector(...) uspešen (ni null) → vzemi .value
+        če ni najden izbran radio gumb → ne vrzi napake, ampak vrni undefined*/
+
 
             if (!ime || !starost || !spol) {
                 alert("⚠️ Prosim, izpolni vsa polja.");
                 return;
             }
 
-            // ✅ Ustvari objekt osebe
-            const oseba = {
-                ime,
-                starost,
-                spol
-            };
+            // // ✅ Ustvari objekt osebe
+            // const oseba = {
+            //     ime,
+            //     starost,
+            //     spol
+            // };
+            // const seznamOseb = [];
+            // seznamOseb.push(new oseba);
 
+            // localStorage.setItem('seznamOseb', JSON.stringify(seznamOseb));
+            // 🔹 3. Ustvari instanco razreda
+            const novaOseba = new Oseba(ime, starost, spol);
+            // 🔹 4. Preberi obstoječe iz localStorage ali ustvari novo polje
+            const seznam = JSON.parse(localStorage.getItem("seznamOseb")) || [];
+
+            // 🔹 5. Dodaj novo osebo
+            seznam.push(novaOseba);
+
+            // 🔹 6. Shrani nazaj
+            localStorage.setItem("seznamOseb", JSON.stringify(seznam));
+
+            // 🔹 7. Izpiši
+            document.getElementById("izpis").innerHTML = `
+    <p>✅ Shranjeno: ${novaOseba.opis()}</p>
+  `;
+        });
+
+        //Prikaz oseb
+        document.addEventListener("DOMContentLoaded", () => {
+            prikaziOsebe(); // kličemo funkcijo za izpis
+        });
+
+        function prikaziOsebe() {
+            const izpis = document.getElementById("izpis");
+            izpis.innerHTML = ""; // počisti prejšnji izpis
+            const seznam = JSON.parse(localStorage.getItem("seznamOseb")) || [];
+
+            seznam.forEach((oseba, index) => {
+                const vrstica = document.createElement("div");
+
+                vrstica.innerHTML = `
+      <p>${oseba.ime}, ${oseba.starost} let, spol: ${oseba.spol}</p>
+      <button class="izbrisi" data-indeks="${index}">🗑️ Izbriši</button>
+    `;
+
+                izpis.appendChild(vrstica);
+            });
 
             
-            // ✅ Destrukturiranje (razloženo spodaj)
-            const { ime: i, starost: s, spol: g } = oseba;
+            // Dogodki za gumbe “Izbriši”
+            document.querySelectorAll(".izbrisi").forEach((gumb) => {
+                gumb.addEventListener("click", (e) => {
+                    const indeks = e.target.dataset.indeks;
+                    const seznam = JSON.parse(localStorage.getItem("seznamOseb")) || [];
+                    seznam.splice(indeks, 1); // odstrani 1 osebo na mestu indeks
+                    localStorage.setItem("seznamOseb", JSON.stringify(seznam));
+                    prikaziOsebe(); // ponovno izpiši
+                });
+            });
+        }
 
-            document.getElementById("izpis").textContent =
-                `✅ Profil: ${i}, ${s} let, spol: ${g}`;
-        });
-        // 🧠 3. Kaj je destrukturiranje ?
-        //             Destrukturiranje pomeni, da iz objekta ali arraya “izvlečeš” podatke v posamezne spremenljivke.
 
-        // 📦 Primer z objektom:
-        //         js
-        //         Kopiraj
-        //         Uredi
-        const oseba = {
-            ime: "Lana",
-            starost: 27,
-            spol: "Ž"
-        };
 
-        const { ime, starost, spol } = oseba;
 
-        console.log(ime);     // "Lana"
-        console.log(starost); // 27
-        // Lahko tudi preimenuješ:
+        // ✅ Destrukturiranje (razloženo spodaj)
+        // const { ime: i, starost: s, spol: g } = oseba;
 
-        const { ime: i, starost: s } = oseba;
-        console.log(i); // "Lana"
-        // 📦 Primer z arrayem:
+        // document.getElementById("izpis").textContent =
+        //     `✅ Profil: ${i}, ${s} let, spol: ${g}`;
+        // });
+        // // 🧠 3. Kaj je destrukturiranje ?
+        // //             Destrukturiranje pomeni, da iz objekta ali arraya “izvlečeš” podatke v posamezne spremenljivke.
 
-        const arr = [1, 2, 3];
-        const [a, b, c] = arr;
+        // // 📦 Primer z objektom:
+        // const oseba = {
+        //     ime: "Lana",
+        //     starost: 27,
+        //     spol: "Ž"
+        // };
+
+        // //   function (e) {
+        // //   e.preventDefault();
+        // //   ...
+        // // }
+        // // Namesto:
+        // //   (e) => {
+        // //   e.preventDefault();
+        // //   ...
+        // // }
+        // //❓ Zakaj je to tukaj čisto v redu?
+        // // V resnici lahko uporabiš obe — običajno function ali arrow function znotraj addEventListener delujeta enako, ker tukaj ne uporabljamo this znotraj funkcije.
+
+        // //           function:               => arrow:
+        // // this:     lastni this    	     nima  – podeduje iz okolice
+        // // arguments:obstaja	             ne obstaja
+        // // new: lahko ustvariš instanco      ne moreš
+        // // berljivost:	daljša	             krajša
+
+
+        // const { ime, starost, spol } = oseba;
+
+        // console.log(ime);     // "Lana"
+        // console.log(starost); // 27
+        // // Lahko tudi preimenuješ:
+
+        // const { ime: i, starost: s } = oseba;
+        // console.log(i); // "Lana"
+        // // 📦 Primer z arrayem:
+
+        // const arr = [1, 2, 3];
+        // const [a, b, c] = arr;
+
+
+
     </script>
     </body>
 
