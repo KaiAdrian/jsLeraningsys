@@ -128,7 +128,7 @@
                 izpis.appendChild(vrstica);
             });
 
-            
+
             // Dogodki za gumbe “Izbriši”
             document.querySelectorAll(".izbrisi").forEach((gumb) => {
                 gumb.addEventListener("click", (e) => {
@@ -141,8 +141,22 @@
             });
         }
 
+        //prikaži željeno lastnost
+        let izpisOseb = JSON.parse(localStorage.getItem("seznamOseb")) || [];
 
+        const polnoletni = izpisOseb.filter(o => o.starost > 18);
+        console.log("Polnoletni:", polnoletni.length);
 
+        console.log(polnoletni);
+        for(ime of polnoletni){
+            const osebePolnoletne=ime.ime;
+            console.log(osebePolnoletne)
+        }
+
+        // Če želiš izpisati imena vseh nad 18:
+        polnoletni.forEach(oseba=>{
+            console.log(`Polnoletne osebe so: ${oseba.ime}  ${oseba.starost} `)
+        });
 
         // ✅ Destrukturiranje (razloženo spodaj)
         // const { ime: i, starost: s, spol: g } = oseba;
