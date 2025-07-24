@@ -87,7 +87,59 @@
             // Ko želiš eno končno vrednost: uporabi .reduce()
 
             // Ko želiš filtrirati elemente: uporabi .filter()
+            const arrTest = [
+                {
+                    ime: "Joži",
+                    starost: 38,
+                    spol: "ž"
+                },
+                {
+                    ime: "Opica",
+                    starost: 15,
+                    spol: "ž"
+                },
+                {
+                    ime: "Kobilica",
+                    starost: 38,
+                    spol: "ž"
+                },
+                {
+                    ime: "Medo",
+                    starost: 38,
+                    spol: "m"
+                },
+                {
+                    ime: "Zajček",
+                    starost: 10,
+                    spol: "m"
+                },
+                {
+                    ime: "Zajček",
+                    starost: 13,
+                    spol: "m"
+                },
+                {
+                    ime: "Zajček",
+                    starost: 13,
+                    spol: "m"
+                },
 
+            ];
+            const spolM = arrTest.filter(value => value.spol === "m")
+            console.log(spolM);
+            console.log(spolM.length);
+
+            const spol = arrTest.reduce((o, spol) => {
+                o[spol.spol] = (o[spol.spol] || 0) + 1;
+                return o;
+                // },)// ← tukaj manjka začetni objekt: {}
+            }, {}); // dodali smo začetni objekt
+            console.log(`Številu dicau: ${spol.m}`)
+            console.log(`Številu bab: ${spol.ž}`);
+
+            //reduce() brez začetne vrednosti vzame prvi element arraya kot začetno vrednost → to ni varno, če želiš zgraditi objekt ali array
+
+            // vedno raje podaj začetno vrednost, npr. {} za objekt ali [] za array
         </script>
     </body>
 
