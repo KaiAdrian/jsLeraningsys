@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            const arrTest = [
+                {
+                    ime: "Joži",
+                    starost: 38,
+                    spol: "ž"
+                },
+                {
+                    ime: "Opica",
+                    starost: 15,
+                    spol: "ž"
+                },
+                {
+                    ime: "Kobilica",
+                    starost: 38,
+                    spol: "ž"
+                },
+                {
+                    ime: "Medo",
+                    starost: 38,
+                    spol: "m"
+                },
+                {
+                    ime: "Zajček",
+                    starost: 10,
+                    spol: "m"
+                },
+                {
+                    ime: "Zajček",
+                    starost: 13,
+                    spol: "m"
+                },
+                {
+                    ime: "Zajček",
+                    starost: 13,
+                    spol: "m"
+                },
+            ];
+
+            for (ime of arrTest) {
+                if (ime.starost < 18) {
+                    console.log(`${ime.ime} ${ime.starost}`)
+                }
+            }
+            //🔧 Predlogi za izboljšave:
+            // 1. Uporabi const ali let v for ... of zanki
+            // Zdaj pišeš samo for(ime of arrTest), kar pomeni, da je ime implicitno globalna spremenljivka (nevarna praksa!).
+
+            // ✅ Popravi to na:
+            // for (const oseba of arrTest) {
+            //   if (oseba.starost < 18) {
+            //     console.log(`${oseba.ime} ${oseba.starost}`);
+            //   }
+            // }
+
+            console.log("");
+            console.log(`presledek`);
+            console.log("");
+
+            // 3. Alternativa z.filter() in .forEach()(če želiš bolj "funkcionalni" stil)
+            arrTest
+                .filter(oseba => oseba.starost < 18)
+                .forEach(oseba => console.log(`${oseba.ime} ${oseba.starost}`));
+            // 🔹 Prednost: jasno ločeni pogoji in dejanja
+            // 🔹 Slabost: za zelo dolge arraye je for...of morda malo hitrejši(a zanemarljivo)
+
+            
+            //🎁 Bonus: Izračun najpogostejšega spola
+            // Dodamo na koncu:
+            const statistikaSpola = arrTest.reduce((acc, oseba) => {
+                acc[oseba.spol] = (acc[oseba.spol] || 0) + 1;
+                return acc;
+            }, {});
+
+            // Poiščemo najpogostejši spol
+            const najpogostejsiSpol = Object.entries(statistikaSpola).reduce((naj, trenutni) => {
+                return trenutni[1] > naj[1] ? trenutni : naj;
+            });
+
+            console.log(`Najpogostejši spol: ${najpogostejsiSpol[0]} (${najpogostejsiSpol[1]} oseb)`);
+
+        </script>
+    </body>
+
+</html>
