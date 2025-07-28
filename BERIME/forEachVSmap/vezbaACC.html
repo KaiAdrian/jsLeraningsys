@@ -175,6 +175,21 @@
 
             console.log(`Najpogostejši spol: ${najpogostejsiSpol[0]} (${najpogostejsiSpol[1]} oseb)`);
 
+            function statistika(array, pogojFn, izpisFn) {
+                array
+                    .filter(pogojFn)         // najde elemente, ki ustrezajo pogoju
+                    .forEach(izpisFn);       // izpiše jih
+            }
+            statistika(
+                arrTest,
+                oseba => oseba.starost < 18,                         // pogoj
+                oseba => console.log(`${oseba.ime}, starost: ${oseba.starost}`) // kaj izpišemo
+            );
+            statistika(
+                arrTest, oseba => oseba.spol === "m",
+                 oseba => console.log(`${oseba.ime}, starost: ${oseba.starost}`) // kaj izpišemo
+            )
+
         </script>
     </body>
 

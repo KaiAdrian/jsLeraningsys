@@ -124,7 +124,14 @@
                 oseba => oseba.starost < 18,                         // pogoj
                 oseba => console.log(`${oseba.ime}, starost: ${oseba.starost}`) // kaj izpišemo
             );
-            statistika(seznam,oseba=>oseba.spol ? "m":"ž")
+            statistika(
+                seznam,
+                oseba => oseba.spol ==="Ž"||console.log("ni "),                         // pogoj
+                oseba => console.log(`${oseba.ime}, spol: ${oseba.spol}`) // kaj izpišemo
+            );
+           
+            ///////////////
+            //////////////
 
             seznam.forEach((oseba, index) => {
                 const vrstica = document.createElement("div");
