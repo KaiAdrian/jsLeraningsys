@@ -119,17 +119,13 @@
 
             /////////////////////////
             ///////// array dostop
-            statistika(
-                seznam,
-                oseba => oseba.starost < 18,                         // pogoj
-                oseba => console.log(`${oseba.ime}, starost: ${oseba.starost}`) // kaj izpišemo
-            );
-            statistika(
-                seznam,
-                oseba => oseba.spol ==="Ž"||console.log("ni "),                         // pogoj
-                oseba => console.log(`${oseba.ime}, spol: ${oseba.spol}`) // kaj izpišemo
-            );
-           
+            const seznamOseb = JSON.parse(localStorage.getItem("seznamOseb")) || [];
+
+            const koliko = steviloUjemanj(seznamOseb, { spol: "Ž", starost: 38 });
+
+            console.log(`Število oseb, ki so ženske in stare 38: ${koliko}`);
+
+
             ///////////////
             //////////////
 
@@ -220,10 +216,17 @@
         // const [a, b, c] = arr;
 
 
-        function statistika(array, pogojFn, izpisFn) {
-            array
-                .filter(pogojFn)         // najde elemente, ki ustrezajo pogoju
-                .forEach(izpisFn);       // izpiše jih
+        // function statistika(array, pogojFn, izpisFn) {
+        //     array
+        //         .filter(pogojFn)         // najde elemente, ki ustrezajo pogoju
+        //         .forEach(izpisFn);       // izpiše jih
+        // }
+        function steviloUjemanj(array, kriteriji) {
+            return array.filter(oseba => {
+                return Object.entries(kriteriji).every(([kljuc, vrednost]) => {
+                    return oseba[kljuc] == vrednost;
+                });
+            }).length;
         }
 
     </script>

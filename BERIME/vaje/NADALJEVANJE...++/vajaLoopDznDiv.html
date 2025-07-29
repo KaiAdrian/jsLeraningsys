@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .moj-div {
+                margin: 20px auto;
+                font: 700 15px/30px Arial, sans-serif;
+                letter-spacing: 0.5px;  
+            }
+        </style>
+    </head>
+
+    <body>
+        <button id="dodaj">Dodaj</button>
+        <script>
+            const ustvariDiv = document.getElementById("dodaj");
+            ustvariDiv.addEventListener("click", () => {
+                const dodan = document.createElement("div");
+                dodan.innerHTML = `to sam jaz! `;
+                // ustvariDiv.appendChild(dodan);
+                ///
+                dodan.classList.add("moj-div");
+                document.body.appendChild(dodan); // dodaj v body, ne v gumb
+
+            });
+
+        </script>
+    </body>
+
+</html>
