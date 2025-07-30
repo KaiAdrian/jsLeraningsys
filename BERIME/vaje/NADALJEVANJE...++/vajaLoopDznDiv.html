@@ -9,7 +9,7 @@
             .moj-div {
                 margin: 20px auto;
                 font: 700 15px/30px Arial, sans-serif;
-                letter-spacing: 0.5px;  
+                letter-spacing: 0.5px;
             }
         </style>
     </head>
@@ -17,15 +17,28 @@
     <body>
         <button id="dodaj">Dodaj</button>
         <script>
+
+            let stevec = 1;///za index btn izbrisi
+
+            // ustvariDiv.appendChild(dodan);
+            ///
             const ustvariDiv = document.getElementById("dodaj");
             ustvariDiv.addEventListener("click", () => {
                 const dodan = document.createElement("div");
-                dodan.innerHTML = `to sam jaz! `;
-                // ustvariDiv.appendChild(dodan);
-                ///
-                dodan.classList.add("moj-div");
-                document.body.appendChild(dodan); // dodaj v body, ne v gumb
 
+                dodan.classList.add("moj-div"); document.body.appendChild(dodan); // dodaj v body, ne v gumb
+
+                // shrani indeks kot atribut
+                dodan.dataset.indeks = stevec;
+
+                const indeks = document.querySelectorAll(".moj-div").length;
+                dodan.innerHTML = `To sem jaz  <button  class="izbrisi">Izbriši</button>`;//${indeks}
+
+                const gumbIzbrisi = dodan.querySelector(".izbrisi");
+                gumbIzbrisi.addEventListener("click", () => {
+                    const indeks = dodan.dataset.indeks;
+                    dodan.remove();
+                });
             });
 
         </script>
