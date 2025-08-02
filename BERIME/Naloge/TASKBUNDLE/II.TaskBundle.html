@@ -19,9 +19,15 @@
 Ta pristop deluje le preko strežnika (lokalni ali spletni) — če odpreš .html direktno v brskalniku (file://), lahko modulni importi ne delujejo.
 
 Če uporabljaš VSCode, priporočam Live Server plugin. -->
-        <script src="taskBundle.js">
-
+        <script src="taskBundle.js"></script>
+        <script>
+            console.log(vpisiOsebo("Kristijan", 41, "moški"));// ✅
+            console.log(vpisiOsebo("Ana", "27", "ženska")); // ✅
+            console.log(vpisiOsebo("   Eva  ", 18, "ni podatka"));        // ✅
+            console.log(vpisiOsebo("", 35, "moški"));// ❌ neveljavno ime
+            console.log(vpisiOsebo("123", 20, "ženska"));// ❌ neveljavno ime
+            console.log(vpisiOsebo("Boris", 10, "moški"));// ❌ starost izven mej
+            console.log(vpisiOsebo("Nina", 25, "alien"));// ❌ neveljaven spol
         </script>
     </body>
-
 </html>

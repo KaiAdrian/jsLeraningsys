@@ -6,8 +6,28 @@
 	}
 }
 
-/*export*/ function vpisiOsebo(ime, starost, spol) {
+/*export*/  function vpisiOsebo(ime, starost, spol) {
 	//  new Oseba(ime, starost, spol) // Ustvariš, ampak izgine
+	// 1. Preveri ime: ne prazno + vsebuje samo črke (lahko z šumniki) + začetnica
+	const regexIme = /^[A-ZČŠŽ][a-zčšžćđ]{1,20}$/i;
+	if (typeof ime !== "string" || !regexIme.test(ime.trim())) {
+		console.warn("Neveljavno ime.");
+		return null;
+	}
+
+	// 2. Preveri starost: številka med 15 in 105
+	const starostNum = Number(starost);
+	if (isNaN(starostNum) || starostNum < 15 || starostNum > 105) {
+		console.warn("Neveljavna starost.");
+		return null;
+	}
+
+	// 3. Preveri spol: dovoljene vrednosti
+	const dovoljeniSpoli = ["moški", "ženska", "ni podatka"];
+	if (!dovoljeniSpoli.includes(spol)) {
+		console.warn("Neveljaven spol.");
+		return null;
+	}
 	return new Oseba(ime, starost, spol);
 }
 console.log(vpisiOsebo("Kristijan", 41, "moški")); // undefined
