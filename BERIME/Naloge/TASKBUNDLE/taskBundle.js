@@ -6,7 +6,7 @@
 	}
 }
 
-/*export*/  function vpisiOsebo(ime, starost, spol) {
+/*export*/ function vpisiOsebo(ime, starost, spol) {
 	//  new Oseba(ime, starost, spol) // Ustvariš, ampak izgine
 	// 1. Preveri ime: ne prazno + vsebuje samo črke (lahko z šumniki) + začetnica
 	const regexIme = /^[A-ZČŠŽ][a-zčšžćđ]{1,20}$/i;
@@ -28,6 +28,7 @@
 		console.warn("Neveljaven spol.");
 		return null;
 	}
+	////shrani v localStorage
 	return new Oseba(ime, starost, spol);
 }
 console.log(vpisiOsebo("Kristijan", 41, "moški")); // undefined

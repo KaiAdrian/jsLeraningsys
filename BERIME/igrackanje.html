@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script src="/BERIME/Naloge/TASKBUNDLE/taskBundle.js"></script>
+        <script>
+            // const najstarejsaOseba = Math.max(osebe.starost);
+            // console.log(najstarejsaOseba);
+            const starosti = osebe.map(o => o.starost);
+            const najstarejsa = Math.max(...starosti);
+
+            console.log("Najstarejša oseba ima", najstarejsa, "let.");
+
+
+            const najstarejsaOseba = osebe.reduce((naj, trenutna) => {
+                return trenutna.starost > naj.starost ? trenutna : naj;
+            });
+
+            console.log("Najstarejša oseba je:", najstarejsaOseba.ime, najstarejsaOseba.starost, "let");
+
+            //  🧠 Kaj reduce v resnici počne?
+            // reduce spremlja neko vrednost skozi array
+            // in jo na koncu zmanjša (reduce) v en rezultat – lahko je število, objekt, string, array itd.
+            let array = [1, 3];
+            array.reduce((acc, current) => {
+                // tukaj "gradiš" končni rezultat
+
+                //return updatedAcc;
+            }, /*zacetnaVrednost*/);
+
+            const stevilke = [5, 8, 2, 9];
+
+            const vsota = stevilke.reduce((acc, num) => {
+                return acc + num;
+            }, 0);
+
+            console.log(vsota); // → 24
+
+
+            const najstarejsaA = osebe.reduce((naj, trenutna) => {
+                return trenutna.starost > naj.starost ? trenutna : naj;
+            });
+
+            console.log(najstarejsaA); // { ime: "Boris", starost: 40 }
+
+
+
+            //tukaj nsimo podali zač.vrednosti kot v smislu "}, 0);" ali "}, zacetnaVrednost);"
+
+
+
+            // ChatGPT je rekel:
+            // Odlično si opazil! 👇
+            // To je ena od posebnosti reduce, ki včasih deluje brez začetne vrednosti – ampak to ni vedno priporočljivo.
+
+            // 🔎 Zakaj tukaj deluje brez začetne vrednosti ?
+            //                 Če ne podaš začetne vrednosti, bo reduce avtomatsko:
+
+            // vzela prvi element arraya kot začetni acc(naj),
+
+            //  zanka se začne šele pri drugem elementu.
+
+            // Reduce začne z:
+
+            // naj = { ime: "Ana", starost: 25 } ← prvi element
+
+            // trenutna = { ime: "Boris", starost: 40 }
+
+            // nato { ime: "Tina", starost: 32 }
+
+            // 👉 In primerja naprej brez težav.
+            // ⚠️ Kdaj je to lahko problem?
+            // Ko je array prazen ali lahko prazen, bo:
+            // [].reduce(...)  // ⛔ vrže napako: "Reduce of empty array with no initial value
+
+            // ✅ Priporočilo(varnejša oblika):
+            // Če želiš biti ekspliciten in varen:
+            const najstarejsaAA = osebe.reduce((naj, trenutna) => {
+                return trenutna.starost > naj.starost ? trenutna : naj;
+            }, osebe[0]); // podamo prvi element kot začetno vrednost
+
+            const najmlajsaOseba = osebe.reduce((najMlaj, curr) => {
+                return curr.starost < najMlaj.starost ? curr : najMlaj;
+            });
+
+            console.log(`najmlajša oseba je: ${najmlajsaOseba.ime} z ${najmlajsaOseba.starost} leti.`);
+        </script>
+    </body>
+
+</html>
