@@ -90,6 +90,38 @@
             });
 
             console.log(`najmlajša oseba je: ${najmlajsaOseba.ime} z ${najmlajsaOseba.starost} leti.`);
+            function analiza(osebe) {
+                const statistika = {
+                    povprecnaStarost: 0,
+                    steviloMoskih: 0,
+                    steviloZensk: 0,
+                    polnoletni: [],
+                };
+
+                if (osebe.length === 0) return statistika;
+
+                const vsotaStarosti = osebe.reduce((vsota, oseba) => {
+                    // if (oseba.spol === "moški") statistika.steviloMoskih++;
+                    // if (oseba.spol === "ženska") statistika.steviloZensk++;
+                    oseba.spol === "moški"
+                        ? statistika.steviloMoskih++
+                        : statistika.steviloZensk++;
+                    oseba.starost >= 18 ? statistika.polnoletni.push(oseba.ime) : null;
+                    // Alternativa (če ti je bolj pregledno):
+
+                    // oseba.starost >= 18 && statistika.polnoletni.push(oseba.ime);
+                    // Ta zapis uporablja && kot bližnjico:
+
+                    // če je pogoj resničen, izvede desni del
+
+                    return vsota + oseba.starost;
+                }, 0);
+
+                statistika.povprecnaStarost = vsotaStarosti / osebe.length;
+                return statistika;
+            }
+
+            console.log(analiza(osebe));
         </script>
     </body>
 
