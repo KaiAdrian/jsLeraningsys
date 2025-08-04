@@ -28,6 +28,15 @@ document.addEventListener("DOMContentLoaded", () => {
 		prikaziOpozorilo("✅ Oseba uspešno dodana!", "uspeh");
 		form.reset(); // <--- (neobvezno) počisti obrazec
 	});
+	////POČISTI VSE!!!!
+	document.getElementById("pocistiVse").addEventListener("click", () => {
+		if (confirm("Ali res želiš izbrisati vse osebe?")) {
+			seznamOseb.length = 0; // počisti array
+			localStorage.removeItem("osebe"); // odstrani iz localStorage
+			prikaziOsebe(); // osveži izpis
+			prikaziOpozorilo("🧹 Seznam je bil izbrisan!", "uspeh");
+		}
+	});
 	function prikaziOpozorilo(besedilo, tip = "napaka") {
 		const el = document.getElementById("opozorilo");
 
@@ -49,11 +58,24 @@ function prikaziOsebe() {
 		return;
 	}
 
-	let html = "<ul>";
-	seznamOseb.forEach((o) => {
-		html += `<li>${o.ime} (${o.starost} let, ${o.spol})</li>`;
+	let html =
+		"<table><thead><tr><th>Ime</th><th>Starost</th><th>Spol</th><th>🗑</th></tr></thead><tbody>";
+	seznamOseb.forEach((o, i) => {
+		html += `
+			<tr>
+				<td>${o.ime}</td>
+				<td>${o.starost}</td>
+				<td>${o.spol}</td>
+				<td><button onclick="izbrisiOsebo(${i})">❌</button></td>
+			</tr>
+		`;
 	});
-	html += "</ul>";
+	html += "</tbody></table>";
 
 	izpis.innerHTML = html;
+}
+function izbrisiOsebo(index) {
+	seznamOseb.splice(index, 1); // odstrani iz arraya
+	shraniOsebe(); // posodobi localStorage
+	prikaziOsebe(); // osveži prikaz
 }

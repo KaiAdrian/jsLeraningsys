@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+	<meta charset="UTF-8" />
+	<title>Osebe App</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<h2>Dodaj osebo</h2>
+
+	<form id="osebaForm">
+		<input type="text" id="ime" placeholder="ime" required />
+		<input type="number" id="starost" min="15" max="105" placeholder="starost" required />
+		<select id="spol" required>
+			<option value="" disabled selected>spol</option>
+			<option value="moški">moški</option>
+			<option value="ženska">ženska</option>
+			<option value="ni podatka">ni podatka</option>
+		</select>
+		<button type="submit">Dodaj osebo</button>
+	</form>
+
+	<div id="opozorilo" class="opozorilo"></div>
+	<div id="izpisOseb"></div>
+
+	<script src="app.js"></script>
+</body>
+</html>
